@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just Spanish Academy — Personalized 1:1 Spanish Classes</title>
+  <meta name="description" content="Personalized 1:1 Spanish classes with certified native Colombian teachers. Online or in Bogotá. Designed around your goals, your pace and your story.">
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://justspanish.com.co/">
+  <meta property="og:title" content="Just Spanish Academy — Personalized 1:1 Spanish Classes">
+  <meta property="og:description" content="Personalized 1:1 Spanish classes with certified native Colombian teachers. Online or in Bogotá. Designed around your goals, your pace and your story.">
+  <meta property="og:image" content="https://justspanish.com.co/images/og-cover.jpg">
+  <meta property="og:locale" content="en_US">
+  <!-- Twitter / WhatsApp -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Just Spanish Academy — Personalized 1:1 Spanish Classes">
+  <meta name="twitter:description" content="Personalized 1:1 Spanish classes with certified native Colombian teachers. Online or in Bogotá. Designed around your goals, your pace and your story.">
+  <meta name="twitter:image" content="https://justspanish.com.co/images/og-cover.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════
+       TOKENS & RESET
+    ═══════════════════════════════════════════════ */
+    :root {
+      --green:        #719547;
+      --green-dark:   #4f6b33;
+      --green-pale:   #eef5e4;
+      --green-mid:    #c8dab0;
+      --carbon:       #333333;
+      --carbon-dark:  #1a1916;
+      --cream:        #f9f9f7;
+      --white:        #ffffff;
+      --text-1:       #1a1916;
+      --text-2:       #555;
+      --text-3:       #a09d97;
+      --border:       rgba(0,0,0,.08);
+      --r-sm:         10px;
+      --r-md:         14px;
+      --r-lg:         20px;
+      --r-xl:         24px;
+      --ease:         cubic-bezier(.16,1,.3,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text-1); background: #f6f4f0; overflow-x: hidden }
+    img { max-width: 100%; display: block }
+    a { text-decoration: none; color: inherit }
+
+    /* ═══════════════════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════════════════ */
+    h1, h2, h3 { font-family: 'Fredoka', sans-serif; font-weight: 500; line-height: 1.12 }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 600; letter-spacing: -.01em }
+    h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); letter-spacing: -.005em }
+    h3 { font-size: 1.1rem }
+
+    /* ═══════════════════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════════════════ */
+
+    /* ── Chip — matches reference exactly ── */
+    .chip {
+      display: inline-block;
+      font-size: .6875rem; font-weight: 400;
+      letter-spacing: .09em; text-transform: uppercase;
+      color: #719547; background: #eef5e4;
+      border: 1px solid rgba(113,149,71,.22);
+      padding: .38em 1em; border-radius: 100px;
+      margin-bottom: 1.1rem;
+    }
+    .chip--dark {
+      color: var(--green-mid); background: rgba(113,149,71,.12);
+      border-color: rgba(113,149,71,.25);
+    }
+    .chip--ghost {
+      color: rgba(255,255,255,.9); background: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    /* ── Shared fill-from-left button base ── */
+    .btn-fill {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      padding: .8rem 1.75rem; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 400;
+      letter-spacing: .01em; cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: color .35s var(--ease);
+    }
+    .btn-fill > * { position: relative; z-index: 1 }
+    .btn-fill::before {
+      content: ''; position: absolute; inset: 0;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .38s var(--ease);
+    }
+    .btn-fill:hover::before { transform: scaleX(1) }
+
+    /* Green → dark green on hover */
+    .btn-fill--green {
+      background: var(--green); color: var(--white);
+      border: 1.5px solid var(--green);
+    }
+    .btn-fill--green::before { background: var(--green-dark) }
+    .btn-fill--green:hover { color: var(--white) }
+
+    /* Carbon → white+green on hover */
+    .btn-fill--carbon {
+      background: var(--carbon); color: var(--white);
+      border: 1.5px solid var(--carbon);
+    }
+    .btn-fill--carbon::before { background: var(--white) }
+    .btn-fill--carbon:hover { color: var(--green) }
+
+    /* White → carbon on hover (hero primary) */
+    .btn-fill--white {
+      background: var(--white); color: var(--carbon);
+      border: 1.5px solid var(--white);
+    }
+    .btn-fill--white::before { background: var(--carbon) }
+    .btn-fill--white:hover { color: var(--white) }
+
+    /* White outline (CTA section, FAQ) → white fill + green text */
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      padding: .8rem 1.75rem; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 400;
+      letter-spacing: .01em; cursor: pointer;
+      border: 1.5px solid var(--green); color: var(--green); background: transparent;
+      position: relative; overflow: hidden; transition: color .35s var(--ease);
+    }
+    .btn-outline > * { position: relative; z-index: 1 }
+    .btn-outline::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--green); transform: scaleX(0); transform-origin: left;
+      transition: transform .38s var(--ease);
+    }
+    .btn-outline:hover { color: var(--white) }
+    .btn-outline:hover::before { transform: scaleX(1) }
+
+    .btn-outline--white {
+      border-color: rgba(255,255,255,.6); color: rgba(255,255,255,.92);
+      background: transparent;
+    }
+    .btn-outline--white::before { background: var(--white) }
+    .btn-outline--white:hover { color: var(--green) }
+
+    /* ── Scroll reveal ── */
+    .sr { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease), transform .7s var(--ease) }
+    .sr.in { opacity: 1; transform: translateY(0) }
+    .sr-d1 { transition-delay: .08s }
+    .sr-d2 { transition-delay: .16s }
+    .sr-d3 { transition-delay: .24s }
+    .sr-d4 { transition-delay: .32s }
+    @media (prefers-reduced-motion: reduce) {
+      .sr { opacity: 1; transform: none; transition: none }
+    }
+
+    /* ═══════════════════════════════════════════════
+       1 · HEADER
+    ═══════════════════════════════════════════════ */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: #ffffff; border-bottom: 1px solid transparent;
+      transition: transform .4s var(--ease), border-color .3s, box-shadow .3s;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+    .header.scrolled {
+      border-color: var(--border);
+      box-shadow: 0 2px 20px rgba(0,0,0,.06);
+    }
+        .header__inner {
+      max-width: 1200px; margin: 0 auto;
+      height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .logo { display: flex; align-items: center; gap: .65rem; flex-shrink: 0 }
+    .logo__icon {
+      width: 36px; height: 36px; background: var(--green);
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative;
+    }
+    .logo__icon::after {
+      content: ''; position: absolute; bottom: -5px; left: 7px;
+      border: 5px solid transparent; border-top: 5px solid var(--green); border-right: 0;
+    }
+    .logo__icon svg { width: 20px; height: 20px }
+    .logo__text { display: flex; flex-direction: column; gap: 1px }
+    .logo__name { font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 500; color: var(--carbon); line-height: 1 }
+    .logo__name span { color: var(--green) }
+    .logo__academy { font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-3); line-height: 1 }
+
+    .nav { display: flex; align-items: center; gap: 2rem }
+    .nav__link {
+      font-size: .875rem; color: var(--text-2);
+      transition: color .22s; white-space: nowrap;
+      position: relative; padding-bottom: 2px;
+    }
+    .nav__link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: var(--green); border-radius: 2px;
+      transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease);
+    }
+    .nav__link:hover { color: var(--green) }
+    .nav__link:hover::after { transform: scaleX(1) }
+    .nav__link.active { color: var(--green) }
+    .nav__link.active::after { transform: scaleX(1) }
+
+    /* Header CTA — solid green, hover fill white + green text (v8 style) */
+    .header__cta {
+      flex-shrink: 0;
+      background: var(--green) !important;
+      color: var(--white) !important;
+      border-color: var(--green) !important;
+    }
+    .header__cta::before { background: var(--white) !important }
+    .header__cta:hover { color: var(--green) !important }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--carbon); border-radius: 2px;
+      transition: all .3s var(--ease);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
+    .hamburger.open span:nth-child(2) { opacity: 0 }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
+
+    .mobile-nav {
+      display: none; flex-direction: column; gap: 0;
+      background: var(--white); border-top: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    .mobile-nav.open { display: flex }
+    .mobile-nav__link {
+      font-size: 1rem; color: var(--text-2);
+      padding: .85rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav__cta { padding: 1rem clamp(1rem, 4vw, 3rem) }
+
+    /* ═══════════════════════════════════════════════
+       PAGE WRAPPER
+    ═══════════════════════════════════════════════ */
+    .page { padding-top: 68px }
+
+    /* ═══════════════════════════════════════════════
+       2 · HERO
+    ═══════════════════════════════════════════════ */
+    .hero {
+      background: var(--white);
+      padding: 0 clamp(1rem, 4vw, 3rem);
+      min-height: calc(100vh - 68px);
+      display: flex; align-items: center;
+    }
+    .hero__inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1.15fr 1fr;
+      gap: 3rem; align-items: center;
+      padding: 6rem 0 0;
+    }
+    .hero__content { display: flex; flex-direction: column; gap: 1.5rem }
+    .hero__title {
+      color: var(--carbon);
+      font-weight: 600;
+      line-height: 1.08;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      letter-spacing: -.01em;
+    }
+    .hero__title-dk { color: var(--carbon) }
+    .hero__title-green { color: var(--green) }
+    .hero__desc {
+      font-size: 1rem; color: var(--text-2); line-height: 1.78;
+      max-width: 440px;
+    }
+    .hero__btns { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center }
+
+    /* Primary CTA — solid green, elevation on hover */
+    .hero__cta-primary {
+      background: var(--green); color: var(--white);
+      padding: .85rem 1.75rem; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-size: .9375rem;
+      border: 1.5px solid var(--green); cursor: pointer;
+      line-height: 1.3; text-align: center;
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+    }
+    .hero__cta-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(113,149,71,.38);
+    }
+
+    /* Secondary CTA — green outline, elevation on hover */
+    .hero__cta-secondary {
+      padding: .85rem 1.75rem; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-size: .9375rem;
+      border: 1.5px solid var(--green); color: var(--green);
+      background: transparent; cursor: pointer;
+      line-height: 1.3; text-align: center;
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+    }
+    .hero__cta-secondary > span { position: relative; z-index: 1 }
+    .hero__cta-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(113,149,71,.2);
+    }
+
+    .hero__trust { display: flex; align-items: center; gap: .75rem; margin-top: 1.5rem }
+    .hero__flags { font-size: 1.1rem; letter-spacing: 2px }
+    .hero__trust-text { font-size: .8125rem; color: var(--text-3) }
+
+    .hero__visual {
+      display: flex; align-items: flex-end; justify-content: center;
+      padding: 0 1.5rem 0 0;
+    }
+    .hero__photo-wrap { width: 100%; display: flex; align-items: flex-end }
+    .hero__photo {
+      width: 100%; height: 340px; object-fit: cover;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -8px 40px rgba(0,0,0,.12);
+      background: var(--green-mid);
+    }
+    .hero__photo-fallback {
+      width: 100%; height: 340px;
+      background: linear-gradient(160deg, var(--green-mid), var(--green-pale));
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -8px 40px rgba(0,0,0,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .875rem; color: var(--green-dark);
+      font-style: italic; text-align: center; padding: 2rem;
+    }
+    /* Hero → Why section transition */
+    .hero { padding-bottom: 5rem }
+    .hero-to-why { display: none }
+
+    /* ═══════════════════════════════════════════════
+       3 · WHY JUST SPANISH
+    ═══════════════════════════════════════════════ */
+    .why { background: #f6f4f0; padding: 3rem clamp(1rem, 4vw, 3rem) 0; position: relative }
+    .why-to-programs { display: none }
+    .why__inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start;
+      padding-bottom: 3rem;
+    }
+    .why__left {
+      display: flex; flex-direction: column;
+      position: sticky; top: calc(68px + 2.5rem);
+    }
+    .why__eyebrow {
+      align-self: flex-start;
+      margin-bottom: .5rem;
+    }
+    .why__eyebrow .chip {
+      font-weight: 400;
+      letter-spacing: .07em;
+      white-space: nowrap;
+    }
+    .why__center {
+      display: flex; flex-direction: column;
+      align-items: flex-start; text-align: left;
+      gap: .875rem;
+    }.why__title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--carbon); line-height: 1.15;
+    }
+    .why__title-accent { color: var(--green) }
+    .why__desc { font-size: .9375rem; color: var(--text-2); line-height: 1.75; max-width: 100% }
+
+    .why__cards { display: flex; flex-direction: column; gap: .875rem }
+    .why-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-md); padding: 1.25rem 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      border-left: 3px solid var(--green);
+      transition: box-shadow .35s var(--ease), transform .35s var(--ease);
+      cursor: default;
+    }
+    .why-card:hover {
+      box-shadow: 0 4px 24px rgba(113,149,71,.1);
+      transform: translateX(3px);
+    }
+    .why-card:hover .why-card__title { color: var(--green) }
+    .why-card__icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(113,149,71,.3);
+    }
+    .why-card__icon svg { width: 22px; height: 22px; stroke: var(--white); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round }
+    .why-card__body { flex: 1 }
+    .why-card__title { font-size: .9375rem; font-weight: 600; color: var(--carbon); margin-bottom: .35rem; transition: color .3s }
+    .why-card__text { font-size: .875rem; color: var(--text-2); line-height: 1.68 }
+
+    /* ═══════════════════════════════════════════════
+       4 · PROGRAMS
+    ═══════════════════════════════════════════════ */
+    .programs { background: #ffffff; padding: 3rem clamp(1rem, 4vw, 3rem) 6rem }
+    .programs__inner { max-width: 1200px; margin: 0 auto }
+    .programs__head { margin-bottom: 2.5rem; text-align: center; }
+    .programs__eyebrow { margin-bottom: 1rem }
+    .programs__title { color: var(--carbon); margin-bottom: .75rem; text-align: center; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.12 }
+    .programs__title-accent { color: var(--green) }
+    .programs__desc { font-size: .9375rem; color: var(--text-2); max-width: 520px; margin: 0 auto; text-align: center }
+
+    .programs__both {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--r-sm); padding: .875rem 1.5rem;
+      margin: 1.5rem auto 2rem; width: fit-content;
+    }
+    .both-item { display: flex; align-items: center; gap: .5rem; font-size: .875rem; color: var(--text-2) }
+    .both-item__check { color: var(--green); font-size: 1rem; font-weight: 600 }
+
+    /* Program CTAs — elevation animation */
+    .prog-cta-green {
+      display: block; width: 100%; padding: .875rem 1rem;
+      background: var(--green); color: var(--white); text-align: center;
+      border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: .9rem;
+      border: none; cursor: pointer; font-weight: 400;
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+    }
+    .prog-cta-green:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(113,149,71,.35) }
+
+    .prog-cta-carbon {
+      display: block; width: 100%; padding: .875rem 1rem;
+      background: var(--carbon); color: var(--white); text-align: center;
+      border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: .9rem;
+      border: none; cursor: pointer; font-weight: 400;
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+    }
+    .prog-cta-carbon:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,0,0,.2) }
+
+    .programs__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: stretch }
+
+    .prog-card {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      background: var(--white); height: 100%;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+      transition: transform .3s var(--ease), box-shadow .3s;
+    }
+    .prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1) }
+    .prog-card--featured { border-color: var(--green); box-shadow: 0 4px 28px rgba(113,149,71,.18) }
+    .prog-card--featured:hover { box-shadow: 0 12px 44px rgba(113,149,71,.28) }
+
+    .prog-card__header { padding: 1.75rem 1.75rem 1.5rem; position: relative; overflow: hidden }
+    .prog-card__header--green { background: var(--green) }
+    .prog-card__header--dark { background: var(--carbon) }
+    .prog-card__header::before {
+      content: ''; position: absolute; top: -30px; right: -30px;
+      width: 120px; height: 120px; border-radius: 50%;
+      background: rgba(255,255,255,.07); pointer-events: none;
+    }
+    .prog-card__header::after {
+      content: ''; position: absolute; bottom: -20px; left: -20px;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(255,255,255,.04); pointer-events: none;
+    }
+    .prog-card__name { font-size: 1.3rem; font-weight: 500; color: var(--white); margin-bottom: .5rem; position: relative; z-index: 1 }
+    .prog-card__tagline { position: relative; z-index: 1; margin-bottom: .75rem }
+    .prog-card__desc { font-size: .875rem; color: rgba(255,255,255,.75); line-height: 1.65; position: relative; z-index: 1 }
+
+    .prog-card__body { padding: 1.25rem 1.5rem; flex: 1; display: flex; flex-direction: column }
+
+    /* Tiers */
+    .tiers { display: grid; grid-template-columns: repeat(3,1fr); gap: .625rem; align-items: end }
+    .tier {
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      padding: .875rem .5rem; text-align: center;
+      transition: border-color .25s, background .25s; cursor: default;
+    }
+    .tier:hover { border-color: var(--green); background: var(--green-pale) }
+    .tier--pop { border-color: var(--green); background: var(--green-pale) }
+    .tier__wrap { display: flex; flex-direction: column; align-items: center }
+    .tier__badge {
+      background: #f5c842; color: var(--carbon);
+      font-size: .6875rem; font-weight: 700; letter-spacing: .04em;
+      padding: .2em .7em; border-radius: 100px;
+      margin-bottom: .375rem; white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(245,200,66,.4);
+    }
+    .tier__inner { border: 1px solid var(--green); background: var(--green-pale); border-radius: var(--r-sm); padding: .875rem .5rem; width: 100%; text-align: center }
+    .tier__classes { font-size: .6875rem; color: var(--text-3); margin-bottom: .3rem; text-transform: uppercase; letter-spacing: .05em }
+    .tier__classes--g { color: var(--green); font-weight: 600 }
+    .tier__price { font-size: 1.25rem; font-weight: 600; color: var(--carbon) }
+    .tier__price--g { color: var(--green) }
+    .tier__hr { font-size: .6875rem; font-weight: 400; color: var(--text-3) }
+    .tier__total { font-size: .75rem; color: var(--text-3); margin-top: .25rem }
+    .tier__total--g { color: var(--green) }
+
+    /* Steps pricing */
+    .steps-price { margin-bottom: 1rem; flex: 1 }
+    .steps-from { font-size: .8125rem; color: var(--text-3); margin-bottom: .25rem }
+    .steps-amount { font-size: 2.2rem; font-weight: 600; color: var(--carbon); line-height: 1 }
+    .steps-mo { font-size: .875rem; font-weight: 400; color: var(--text-3) }
+    .steps-note { font-size: .8125rem; color: var(--text-3); line-height: 1.55; margin-top: .625rem; font-style: italic }
+
+    /* Perfect for */
+    .prog-card__for { padding: .875rem 1.5rem; border-top: 1px solid var(--border); margin-top: auto }
+    .for-label {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: .07em;
+      color: var(--carbon); background: var(--cream); border: 1px solid var(--border);
+      padding: .3em .9em; border-radius: 100px; margin-bottom: .6rem;
+    }
+    .for-label__dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #f5c842; flex-shrink: 0;
+      box-shadow: 0 1px 4px rgba(245,200,66,.5);
+    }
+    .for-text { font-size: .875rem; color: var(--text-2); line-height: 1.65 }
+
+    .prog-card__cta { padding: .875rem 1.5rem; margin-top: auto }
+
+    /* ═══════════════════════════════════════════════
+       5 · TEACHERS
+    ═══════════════════════════════════════════════ */
+    .teachers { background: var(--carbon-dark); padding: 4rem clamp(1rem, 4vw, 3rem); position: relative; overflow: hidden }
+    .teachers::after {
+      content: ''; position: absolute; bottom: -80px; right: -80px;
+      width: 360px; height: 360px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(113,149,71,.08), transparent 65%);
+      pointer-events: none;
+    }
+    .teachers__inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1 }
+    .teachers__head { text-align: center; margin-bottom: 2rem }
+    .teachers__eyebrow { margin-bottom: .75rem }
+    .teachers__title { color: var(--white); margin-bottom: .5rem; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.12 }
+    .teachers__sub { font-size: .9375rem; color: rgba(255,255,255,.4) }
+
+    .teachers__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem }
+    .teacher-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px; padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: .75rem;
+      transition: all .38s var(--ease);
+    }
+    .teacher-card:hover {
+      background: rgba(255,255,255,.07); border-color: rgba(113,149,71,.38);
+      transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    }
+    .teacher-card__photo {
+      width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+      border: 3px solid #719547;
+      background: linear-gradient(145deg, rgba(113,149,71,.35), rgba(113,149,71,.12));
+      margin-bottom: .5rem; transition: border-color .38s;
+    }
+    .teacher-card:hover .teacher-card__photo { border-color: rgba(113,149,71,.55) }
+    .teacher-card__photo-fallback {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(145deg, rgba(113,149,71,.35), rgba(113,149,71,.12));
+      border: 3px solid rgba(113,149,71,.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; margin-bottom: .5rem; flex-shrink: 0;
+      transition: border-color .38s;
+    }
+    .teacher-card__name {
+  display: inline-block;
+  font-size: .9375rem; font-weight: 500; color: var(--white);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+  border-radius: 100px; padding: .3em 1em;
+}
+    .teacher-card__city { font-size: .8125rem; color: rgba(255,255,255,.38) }
+    .teacher-card__phrase {
+      font-size: .875rem; color: rgba(255,255,255,.7);
+      font-style: italic; line-height: 1.65;
+      border-left: 2px solid rgba(113,149,71,.5); padding-left: .75rem; text-align: left;
+    }
+    .teacher-card__tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .375rem; margin-top: .25rem }
+    .teacher-card__tag {
+      font-size: .75rem; color: #c8dab0;
+      background: rgba(113,149,71,.15); border: 1px solid rgba(113,149,71,.3);
+      padding: .2em .7em; border-radius: 100px;
+      transition: all .3s;
+    }
+    .teacher-card:hover .teacher-card__tag { color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.2) }
+    .teacher-card__btn {
+      width: 100%; padding: .6875rem 1rem; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 400;
+      cursor: pointer; border: 1.5px solid rgba(255,255,255,.55); color: rgba(255,255,255,.9);
+      background: transparent; margin-top: auto;
+      position: relative; overflow: hidden; transition: color .35s var(--ease);
+    }
+    .teacher-card__btn > span { position: relative; z-index: 1 }
+    .teacher-card__btn::before {
+      content: ''; position: absolute; inset: 0; background: var(--white);
+      transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease);
+    }
+    .teacher-card__btn:hover { color: var(--carbon) }
+    .teacher-card__btn:hover::before { transform: scaleX(1) }
+
+    /* ═══════════════════════════════════════════════
+       6 · TESTIMONIALS
+    ═══════════════════════════════════════════════ */
+    .testimonials { background: #eef5e4; padding: 3rem clamp(1rem, 4vw, 3rem) 3rem }
+    .testimonials__inner { max-width: 1200px; margin: 0 auto }
+    .testimonials__head { margin-bottom: 2.5rem }
+    .testimonials__eyebrow { margin-bottom: .75rem }
+    .testimonials__title { color: var(--carbon); margin-bottom: .5rem; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.12 }
+    .testi-title-accent { color: var(--green) }
+    .testimonials__sub { font-size: .9375rem; color: var(--text-2) }
+
+    .testimonials__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.25rem }
+
+    /* Featured card — green */
+    .testi-featured {
+      background: var(--green); border-radius: var(--r-xl);
+      padding: 2rem 2.5rem; display: flex; flex-direction: column;
+      gap: 0; position: relative; overflow: hidden;
+      justify-content: center;
+    }
+    .testi-featured::before {
+      content: '\201C'; font-family: Georgia, serif;
+      font-size: 11rem; color: rgba(255,255,255,.1);
+      position: absolute; top: 20%; left: 1rem;
+      line-height: 1; pointer-events: none; z-index: 0;
+    }
+    .testi-featured__content {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .testi-featured__quote {
+      font-size: .9375rem; color: var(--white); line-height: 1.72;
+      font-style: italic; position: relative; z-index: 1;
+      text-align: left;
+    }
+    .testi-featured__author { display: flex; align-items: center; justify-content: flex-start; gap: .875rem }
+    .testi-author-photo {
+      width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+      border: 2px solid rgba(255,255,255,.3);
+      background: rgba(255,255,255,.2); flex-shrink: 0;
+    }
+    .testi-author-photo-fallback {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.2); border: 2px solid rgba(255,255,255,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .testi-author-name { font-size: .9375rem; font-weight: 500; color: var(--white) }
+    .testi-author-from { font-size: .8125rem; color: rgba(255,255,255,.6) }
+
+    /* Small cards column */
+    .testimonials__col { display: flex; flex-direction: column; gap: 1.25rem }
+    .testi-small {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 1.5rem;
+      flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem;
+      transition: transform .3s var(--ease), box-shadow .3s, border-color .3s;
+      cursor: pointer;
+    }
+    .testi-small:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(113,149,71,.1); border-color: rgba(113,149,71,.3) }
+    .testi-small__quote {
+      font-size: .9375rem; color: var(--text-2); line-height: 1.72; font-style: italic;
+    }
+    .testi-small__author { display: flex; align-items: center; gap: .75rem }
+    .testi-sm-photo {
+      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+      border: 1.5px solid var(--green-mid);
+      background: var(--green-pale); flex-shrink: 0;
+    }
+    .testi-sm-photo-fallback {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green-pale); border: 1.5px solid var(--green-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .testi-sm-name { font-size: .875rem; font-weight: 500; color: var(--carbon) }
+    .testi-sm-from { font-size: .8125rem; color: var(--text-3) }
+
+    /* Dots */
+    .testimonials__dots { display: flex; justify-content: center; gap: .5rem; margin-top: 1.5rem }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,.15) }
+    .dot--on { background: var(--green); width: 18px; border-radius: 3px }
+
+    /* ═══════════════════════════════════════════════
+       7 · HOW IT WORKS
+    ═══════════════════════════════════════════════ */
+    .how { background: #ffffff; padding: 3rem clamp(1rem, 4vw, 3rem) 5rem }
+    .how__inner { max-width: 1200px; margin: 0 auto }
+    .how__head { text-align: center; margin-bottom: 3.5rem }
+    .how__eyebrow { margin-bottom: .75rem }
+    .how__title { color: var(--carbon); margin-bottom: .5rem; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.12 }
+    .how__sub { font-size: .9375rem; color: var(--text-2) }
+
+    .how__steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative }
+    .how__steps::before {
+      content: ''; position: absolute;
+      top: 21px; left: calc(12.5% + 6px); right: calc(12.5% + 6px);
+      height: 2px; background: linear-gradient(to right, var(--green-mid), var(--green), var(--green-mid));
+    }
+    .how-step { text-align: center; position: relative; z-index: 1; padding: 0 1.25rem }
+    .how-step__circle {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 500;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 4px 16px rgba(113,149,71,.38);
+      transition: transform .3s var(--ease), box-shadow .3s;
+    }
+    .how-step:hover .how-step__circle {
+      transform: scale(1.12); box-shadow: 0 8px 28px rgba(113,149,71,.48);
+    }
+    .how-step__title { font-size: .9375rem; font-weight: 600; color: var(--carbon); margin-bottom: .5rem; line-height: 1.3 }
+    .how-step__text { font-size: .875rem; color: var(--text-2); line-height: 1.68 }
+
+    /* ═══════════════════════════════════════════════
+       8 · FINAL CTA
+    ═══════════════════════════════════════════════ */
+    .cta-section { background: #f6f4f0; padding: 3rem clamp(1rem, 4vw, 3rem) 3rem }
+    .cta-section__inner { max-width: 1000px; margin: 0 auto }
+    .cta-stack { position: relative; padding-bottom: .5rem; padding-right: .5rem }
+    .cta-stack__back {
+      position: absolute; bottom: 0; right: 0;
+      left: .5rem; top: .5rem;
+      background: var(--green); border-radius: var(--r-xl);
+    }
+    .cta-stack__front {
+      position: relative; z-index: 1;
+      border-radius: var(--r-xl); overflow: hidden;
+      min-height: 320px; display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .cta-stack__img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 44%;
+      border-radius: var(--r-xl);
+      background: linear-gradient(135deg, #2d2a25, #4a4035);
+    }
+    .cta-stack__img-fallback {
+      position: absolute; inset: 0; border-radius: var(--r-xl);
+      background: linear-gradient(135deg, #2d2a25 0%, #4a4035 100%);
+    }
+    .cta-stack__overlay {
+      position: absolute; inset: 0; border-radius: var(--r-xl);
+      background: linear-gradient(to right, rgba(20,18,14,.9) 0%, rgba(20,18,14,.55) 100%);
+    }
+    .cta-stack__content {
+      position: relative; z-index: 2;
+      padding: 4rem 3rem; display: flex; flex-direction: column;
+      align-items: center; gap: 1rem;
+    }
+    .cta-stack__title { color: var(--white); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.12 }
+    .cta-stack__sub { font-size: 1rem; color: rgba(255,255,255,.72) }
+    .cta-btn-white {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: .85rem 2rem; border-radius: 100px;
+      background: var(--white); color: var(--carbon);
+      font-family: 'DM Sans', sans-serif; font-size: .9375rem; font-weight: 400;
+      border: none; cursor: pointer;
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+    }
+    .cta-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25) }
+
+    /* ═══════════════════════════════════════════════
+       9 · FAQ
+    ═══════════════════════════════════════════════ */
+    .faq { background: #ffffff; padding: 3rem clamp(1rem, 4vw, 3rem) 2rem }
+    .faq__inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start;
+    }
+    .faq__left { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 1rem; align-items: flex-start }
+    .faq__eyebrow { margin-bottom: .25rem }
+    .faq__title { color: var(--carbon); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.12; margin-bottom: .75rem }
+    .faq__desc { font-size: .9375rem; color: var(--text-2); line-height: 1.7 }
+
+    .faq-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: .8rem 1.75rem; border-radius: 100px;
+      background: var(--green); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: .875rem; font-weight: 400;
+      border: none; cursor: pointer; width: fit-content;
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease);
+    }
+    .faq-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(113,149,71,.35) }
+    .faq__list { display: flex; flex-direction: column; gap: .625rem }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-md); overflow: hidden;
+      border-left: 3px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .faq-item.open {
+      border-left-color: var(--green);
+      box-shadow: 0 4px 20px rgba(113,149,71,.08);
+    }
+    .faq-item__btn {
+      width: 100%; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
+      padding: 1.125rem 1.375rem;
+      background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: .9375rem; font-weight: 400;
+      color: var(--carbon); text-align: left;
+      transition: color .22s;
+    }
+    .faq-item.open .faq-item__btn { color: var(--green) }
+    .faq-item__icon {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: var(--green-pale); border: 1.5px solid rgba(113,149,71,.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--green); line-height: 1;
+      font-weight: 300; transition: all .35s var(--ease);
+    }
+    .faq-item.open .faq-item__icon {
+      background: var(--green-pale); color: var(--green);
+      border-color: rgba(113,149,71,.3); transform: rotate(45deg);
+    }
+    .faq-item__answer {
+      max-height: 0; overflow: hidden;
+      font-size: .9375rem; color: var(--text-2); line-height: 1.75;
+      padding: 0 1.375rem;
+      transition: max-height .45s var(--ease), padding .3s;
+    }
+    .faq-item.open .faq-item__answer { max-height: 200px; padding: 0 1.375rem 1.25rem }
+
+    /* ═══════════════════════════════════════════════
+       10 · FOOTER
+    ═══════════════════════════════════════════════ */
+    .footer { background: var(--carbon-dark); padding: 5rem clamp(1rem, 4vw, 3rem) 2.5rem }
+    .footer__inner { max-width: 1200px; margin: 0 auto }
+    .footer__grid {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 4rem;
+      padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 2rem;
+    }
+    /* Footer logo */
+    .footer__logo { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem }
+    .footer__logo-icon {
+      width: 40px; height: 40px; background: var(--green);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative;
+    }
+    .footer__logo-icon::after {
+      content: ''; position: absolute; bottom: -5px; left: 8px;
+      border: 5px solid transparent; border-top: 5px solid var(--green); border-right: 0;
+    }
+    .footer__logo-icon svg { width: 22px; height: 22px }
+    .footer__logo-text { display: flex; flex-direction: column; gap: 2px }
+    .footer__logo-name {
+      font-family: 'Fredoka', sans-serif; font-size: 1.1rem; font-weight: 500;
+      color: var(--white); line-height: 1;
+    }
+    .footer__logo-name span { color: var(--green-mid) }
+    .footer__logo-academy { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.38); line-height: 1 }
+
+    .footer__brand-desc { font-size: .9rem; color: rgba(255,255,255,.5); line-height: 1.75; max-width: 320px }
+
+    .footer__col-title {
+      font-size: .8125rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(255,255,255,.9);
+      margin-bottom: 1.5rem; position: relative; padding-bottom: .75rem;
+    }
+    .footer__col-title::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 24px; height: 2px; background: var(--green); border-radius: 2px;
+    }
+    .footer__links { display: flex; flex-direction: column; gap: .875rem }
+    .footer__link { font-size: .9rem; color: rgba(255,255,255,.5); transition: color .22s }
+    .footer__link:hover { color: var(--green-mid) }
+
+    .footer__contact { display: flex; flex-direction: column; gap: .875rem }
+    .footer__contact-item { display: flex; align-items: center; gap: .625rem; font-size: .9rem; color: rgba(255,255,255,.5) }
+    .footer__contact-link {
+      display: flex; align-items: center; gap: .625rem;
+      color: rgba(255,255,255,.5); text-decoration: none;
+      transition: color .22s;
+    }
+    .footer__contact-link:hover { color: var(--green-mid) }
+    .footer__contact-icon { font-size: .9rem; flex-shrink: 0 }
+    .footer__socials {
+      display: flex; gap: .625rem; margin-top: 1.5rem;
+      padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .footer__social {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .8125rem; color: rgba(255,255,255,.5);
+      border: 1px solid rgba(255,255,255,.15); padding: .4rem 1rem;
+      border-radius: 8px; cursor: pointer; transition: all .3s;
+    }
+    .footer__social:hover { border-color: rgba(113,149,71,.5); color: var(--green-mid); background: rgba(113,149,71,.1) }
+
+    .footer__bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem }
+    .footer__legal { font-size: .8125rem; color: rgba(255,255,255,.32); display: flex; gap: 1.5rem; flex-wrap: wrap }
+    .footer__legal-link { color: rgba(255,255,255,.32); transition: color .22s }
+    .footer__legal-link:hover { color: rgba(255,255,255,.55) }
+    .footer__tagline { font-size: .875rem; color: rgba(200,218,176,.45); font-style: italic; letter-spacing: .06em }
+
+    /* ═══════════════════════════════════════════════
+       MODAL
+    ═══════════════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.55); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem; opacity: 0; pointer-events: none;
+      transition: opacity .35s var(--ease);
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all }
+    .modal-card {
+      background: var(--white); border-radius: var(--r-xl);
+      padding: 2.5rem; max-width: 520px; width: 100%;
+      position: relative; transform: translateY(24px);
+      transition: transform .35s var(--ease);
+    }
+    .modal-overlay.open .modal-card { transform: translateY(0) }
+    .modal-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--cream); border: none; cursor: pointer;
+      font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+      color: var(--text-3); transition: background .22s;
+    }
+    .modal-close:hover { background: #e8e5e0 }
+    .modal__eyebrow { margin-bottom: .75rem }
+    .modal__title { font-size: 1.5rem; color: var(--carbon); margin-bottom: .75rem }
+    .modal__desc { font-size: .9375rem; color: var(--text-2); line-height: 1.75; margin-bottom: 1.5rem }
+    .modal__perks { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 2rem }
+    .modal__perk { display: flex; align-items: center; gap: .625rem; font-size: .875rem; color: var(--text-2) }
+    .modal__perk-icon { color: var(--green); font-weight: 700; flex-shrink: 0 }
+    .modal__cta {
+      display: block; width: 100%; padding: .9rem 1.5rem;
+      background: #25D366; color: var(--white); text-align: center;
+      border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: .9375rem;
+      transition: background .3s; border: none; cursor: pointer;
+    }
+    .modal__cta:hover { background: #1ebe5a }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════ */
+    /* ── Tablet (≤960px) ── */
+    @media (max-width: 960px) {
+      h1 { font-size: 2.2rem; letter-spacing: 0 }
+      h2 { font-size: 1.75rem }
+
+      .nav { display: none }
+      .header__cta { display: none }
+      .hamburger { display: flex }
+
+      .hero__inner { grid-template-columns: 1fr; padding: 3rem 0 0 }
+      .hero__visual { padding: 0 }
+      .hero__photo, .hero__photo-fallback { height: 300px; border-radius: 16px 16px 0 0 }
+      .hero__desc { max-width: 100% }
+      .hero__title { white-space: normal }
+
+      .why__inner { grid-template-columns: 1fr; gap: 2.5rem }
+      .why__left { position: static; min-height: auto }
+      .why__center { padding: 1rem 0 0 }
+      .why__desc { max-width: 100% }
+
+      .programs__head { text-align: left }
+      .programs__both { width: 100%; justify-content: flex-start }
+      .programs__grid { grid-template-columns: 1fr }
+      .programs__desc { margin: 0; max-width: 100% }
+
+      .teachers__grid { grid-template-columns: repeat(2, 1fr) }
+
+      .testimonials__grid { grid-template-columns: 1fr }
+      .testimonials__col { flex-direction: row }
+
+      .how__steps { grid-template-columns: 1fr 1fr; gap: 2.5rem }
+      .how__steps::before { display: none }
+
+      .cta-stack__content { padding: 3rem 2rem }
+
+      .faq__inner { grid-template-columns: 1fr; gap: 2.5rem }
+      .faq__left { position: static }
+
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 3rem }
+    }
+
+    /* ── Mobile (≤640px) ── */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.9rem }
+      h2 { font-size: 1.5rem }
+
+      .hero__btns { flex-direction: column; align-items: stretch }
+      .hero__cta-primary, .hero__cta-secondary { width: 100%; text-align: center }
+
+      .teachers__grid { grid-template-columns: 1fr }
+      .testimonials__col { flex-direction: column }
+
+      .programs__both { gap: .75rem }
+      .how__steps { grid-template-columns: 1fr; gap: 2rem }
+
+      .testi-featured { padding: 2rem 1.5rem }
+
+      .footer__grid { grid-template-columns: 1fr; gap: 2.5rem }
+
+      .cta-stack__content { padding: 2.5rem 1.5rem }
+      .cta-stack__title { font-size: 1.5rem }
+
+      .modal-card { padding: 2rem 1.5rem }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     1 · HEADER
+═══════════════════════════════════════════════ -->
+<header class="header" id="header">
+  <div class="header__inner">
+   <a href="#" class="logo" aria-label="Just Spanish Academy">
+  <img src="logo-dark.png" alt="Just Spanish Academy" style="height: 100px;">
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#programs" class="nav__link">Programs</a>
+      <a href="#teachers" class="nav__link">Teachers</a>
+      <a href="#testimonials" class="nav__link">Reviews</a>
+      <a href="#faq" class="nav__link">FAQ</a>
+    </nav>
+    <a href="https://wa.me/573001672889?text=Hi!%20I'd%20like%20to%20get%20in%20touch%20with%20Just%20Spanish." class="btn-outline header__cta" target="_blank" rel="noopener noreferrer">
+      <span>Get in touch</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="#programs" class="mobile-nav__link">Programs</a>
+    <a href="#teachers" class="mobile-nav__link">Teachers</a>
+    <a href="#testimonials" class="mobile-nav__link">Reviews</a>
+    <a href="#faq" class="mobile-nav__link">FAQ</a>
+    <div class="mobile-nav__cta">
+      <a href="https://wa.me/573001672889?text=Hi!%20I'd%20like%20to%20get%20in%20touch%20with%20Just%20Spanish." class="btn-outline" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">
+        <span>Get in touch</span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main class="page">
+
+<!-- ═══════════════════════════════════════════════
+     2 · HERO
+═══════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <h1 class="hero__title sr">Spanish built around <span class="hero__title-green">you</span></h1>
+      <p class="hero__desc sr sr-d1">Personalized 1:1 lessons with certified native teachers, designed around your goals, your pace and the life you want to live in Spanish — online or in Bogotá.</p>
+      <div class="hero__btns sr sr-d2">
+        <button class="hero__cta-primary" id="open-modal">Book your free intro session</button>
+        <button class="hero__cta-secondary" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">
+          <span>Explore our programs</span>
+        </button>
+      </div>
+      <div class="hero__trust sr sr-d3">
+        <div class="hero__flags" style="display:flex;align-items:center">
+          <img src="https://flagcdn.com/w40/us.png" width="26" height="26" alt="USA" style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #f6f4f0;margin-left:0">
+          <img src="https://flagcdn.com/w40/de.png" width="26" height="26" alt="Germany" style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #f6f4f0;margin-left:-8px">
+          <img src="https://flagcdn.com/w40/fr.png" width="26" height="26" alt="France" style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #f6f4f0;margin-left:-8px">
+          <img src="https://flagcdn.com/w40/gb.png" width="26" height="26" alt="UK" style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #f6f4f0;margin-left:-8px">
+          <img src="https://flagcdn.com/w40/br.png" width="26" height="26" alt="Brazil" style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #f6f4f0;margin-left:-8px">
+          <img src="https://flagcdn.com/w40/ca.png" width="26" height="26" alt="Canada" style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #f6f4f0;margin-left:-8px">
+          <img src="https://flagcdn.com/w40/jp.png" width="26" height="26" alt="Japan" style="border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #f6f4f0;margin-left:-8px">
+        </div>
+        <div class="hero__trust-text">Trusted by students from 12+ countries</div>
+      </div>
+    </div>
+    <div class="hero__visual sr sr-d2">
+      <div class="hero__photo-wrap">
+        <img src="images/hero-team.jpg" alt="Just Spanish Academy teachers" class="hero__photo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="hero__photo-fallback" style="display:none">
+          Foto del equipo<br/>hero-team.jpg
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     3 · WHY JUST SPANISH
+═══════════════════════════════════════════════ -->
+<section class="why" id="why">
+  <div class="why__inner">
+    <div class="why__left">
+      <div class="why__eyebrow sr">
+        <div class="chip">Why Just Spanish</div>
+      </div>
+      <div class="why__center">
+        <h2 class="why__title sr sr-d1">A <span class="why__title-accent">different</span> way<br/>to learn Spanish.</h2>
+        <p class="why__desc sr sr-d2">We don't teach standard classes. We design personalized learning experiences built entirely around you.</p>
+      </div>
+    </div>
+    <div class="why__cards">
+      <div class="why-card sr sr-d1">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="why-card__body">
+          <div class="why-card__title">Real Spanish from real teachers</div>
+          <p class="why-card__text">Learn with certified professionals who genuinely care about your progress. You'll receive adaptive guidance and honest feedback every step of the way.</p>
+        </div>
+      </div>
+      <div class="why-card sr sr-d2">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="why-card__body">
+          <div class="why-card__title">Your path, built together</div>
+          <p class="why-card__text">We design your learning journey side by side. Your goals, interests and level define a learning experience that evolves with you from day one.</p>
+        </div>
+      </div>
+      <div class="why-card sr sr-d3">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="why-card__body">
+          <div class="why-card__title">Spanish for the real world</div>
+          <p class="why-card__text">We teach Spanish for real life. Vocabulary and expressions in real contexts, so you can hold real conversations and feel confident in any situation.</p>
+        </div>
+      </div>
+      <div class="why-card sr sr-d4">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="why-card__body">
+          <div class="why-card__title">Study anytime, anywhere</div>
+          <p class="why-card__text">Learn from home, your office, your favorite café, or wherever suits you best. Every session is arranged around your schedule and availability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="why-to-programs" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════
+     4 · PROGRAMS
+═══════════════════════════════════════════════ -->
+<section class="programs" id="programs">
+  <div class="programs__inner">
+    <div class="programs__head sr">
+      <div class="chip">Our programs</div>
+      <h2 class="programs__title">Choose <span class="programs__title-accent">your</span> learning path.</h2>
+      <p class="programs__desc">Whatever your reason for learning — work, travel, family, or simply a love for the language — there is a path for you here.</p>
+    </div>
+    <div class="programs__both sr sr-d1">
+      <div class="both-item"><span class="both-item__check">✓</span> One-to-one live classes</div>
+      <div class="both-item"><span class="both-item__check">✓</span> Learning materials</div>
+      <div class="both-item"><span class="both-item__check">✓</span> Progress feedback</div>
+      <div class="both-item"><span class="both-item__check">✓</span> 60-minute sessions</div>
+    </div>
+    <div class="programs__grid">
+
+      <!-- Spanish Your Way -->
+      <div class="prog-card prog-card--featured sr sr-d1">
+        <div class="prog-card__header prog-card__header--green">
+          <div class="prog-card__name">Spanish Your Way</div>
+          <div class="prog-card__tagline"><span class="chip chip--ghost">A fully personalized experience</span></div>
+          <p class="prog-card__desc">Your own curriculum, your own direction. From day one, every class is designed around what matters most to you.</p>
+        </div>
+        <div class="prog-card__body">
+          <div class="tiers">
+            <div class="tier">
+              <div class="tier__classes">4 classes</div>
+              <div class="tier__price">$30<span class="tier__hr">/hr</span></div>
+              <div class="tier__total">$120 total</div>
+            </div>
+            <div class="tier__wrap">
+              <div class="tier__badge">⭐ Most popular</div>
+              <div class="tier__inner">
+                <div class="tier__classes tier__classes--g">8 classes</div>
+                <div class="tier__price tier__price--g">$27<span class="tier__hr">/hr</span></div>
+                <div class="tier__total tier__total--g">$216 total</div>
+              </div>
+            </div>
+            <div class="tier">
+              <div class="tier__classes">12 classes</div>
+              <div class="tier__price">$25<span class="tier__hr">/hr</span></div>
+              <div class="tier__total">$300 total</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card__for">
+          <div class="for-label"><span class="for-label__dot"></span>Perfect for</div>
+          <p class="for-text">Those with a specific goal, a particular interest, or who simply want a learning experience built entirely around them.</p>
+        </div>
+        <div class="prog-card__cta">
+          <a href="https://wa.me/573001672889?text=Hi!%20I'm%20interested%20in%20Spanish%20Your%20Way.%20I'd%20like%20to%20build%20my%20plan." class="prog-cta-green" target="_blank" rel="noopener noreferrer">
+            Build my learning plan →
+          </a>
+        </div>
+      </div>
+
+      <!-- Spanish Steps -->
+      <div class="prog-card sr sr-d2">
+        <div class="prog-card__header prog-card__header--dark">
+          <div class="prog-card__name">Spanish Steps</div>
+          <div class="prog-card__tagline"><span class="chip chip--ghost">A structured learning journey</span></div>
+          <p class="prog-card__desc">Follow a clear path from A1 to C1, based on the CEFR framework, with the flexibility to make it your own.</p>
+        </div>
+        <div class="prog-card__body">
+          <div class="steps-price">
+            <div class="steps-from">Starting from</div>
+            <div class="steps-amount">$324 <span class="steps-mo">/ month</span></div>
+            <p class="steps-note">Your final price depends on your current level, which we'll assess together during your free intro session.</p>
+          </div>
+        </div>
+        <div class="prog-card__for">
+          <div class="for-label"><span class="for-label__dot"></span>Perfect for</div>
+          <p class="for-text">Learners who enjoy following a level-based progression while still receiving personalized guidance.</p>
+        </div>
+        <div class="prog-card__cta">
+          <a href="https://wa.me/573001672889?text=Hi!%20I'm%20interested%20in%20Spanish%20Steps.%20I'd%20like%20to%20find%20my%20level." class="prog-cta-carbon" target="_blank" rel="noopener noreferrer">
+            <span>Find my level →</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     5 · TEACHERS
+═══════════════════════════════════════════════ -->
+<section class="teachers" id="teachers">
+  <div class="teachers__inner">
+    <div class="teachers__head">
+      <div class="chip chip--dark">Your teachers</div>
+      <h2 class="teachers__title sr sr-d1">The people behind your Spanish journey.</h2>
+      <p class="teachers__sub sr sr-d2">Meet the people you'll learn with.</p>
+    </div>
+    <div class="teachers__grid">
+
+      <div class="teacher-card sr sr-d1">
+        <img src="images/teacher-1.jpg" alt="Teacher 1" class="teacher-card__photo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="teacher-card__photo-fallback" style="display:none">👩‍🏫</div>
+        <div class="teacher-card__name">María Camila</div>
+        <div class="teacher-card__city">Bogotá &nbsp;<svg width="14" height="10" viewBox="0 0 18 13" style="vertical-align:middle"><rect width="18" height="5" fill="#FCD116"/><rect y="5" width="18" height="4" fill="#003087"/><rect y="9" width="18" height="4" fill="#CE1126"/></svg></div>
+        <div class="teacher-card__phrase">"I teach Spanish the way it was meant to be spoken — naturally, confidently, and without fear of making mistakes."</div>
+        <div class="teacher-card__tags">
+          <span class="teacher-card__tag">Conversational</span>
+          <span class="teacher-card__tag">Business</span>
+          <span class="teacher-card__tag">Culture</span>
+        </div>
+        <button class="teacher-card__btn" onclick="window.open('https://youtu.be/Rk5xw_eB37A?si=PFnpJv-IR1pslTzn','_blank')"><span>See more →</span></button>
+      </div>
+
+      <div class="teacher-card sr sr-d2">
+        <img src="images/teacher-2.jpg" alt="Teacher 2" class="teacher-card__photo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="teacher-card__photo-fallback" style="display:none">👨‍🏫</div>
+        <div class="teacher-card__name">Mauricio</div>
+        <div class="teacher-card__city">Ibagué &nbsp;<svg width="14" height="10" viewBox="0 0 18 13" style="vertical-align:middle"><rect width="18" height="5" fill="#FCD116"/><rect y="5" width="18" height="4" fill="#003087"/><rect y="9" width="18" height="4" fill="#CE1126"/></svg></div>
+        <div class="teacher-card__phrase">"Every class is a real conversation. I learn as much from my students as they learn from me."</div>
+        <div class="teacher-card__tags">
+          <span class="teacher-card__tag">Beginners</span>
+          <span class="teacher-card__tag">Grammar</span>
+          <span class="teacher-card__tag">Travel</span>
+        </div>
+        <button class="teacher-card__btn" onclick="window.open('https://youtu.be/tjgixexi3XI?si=lrzvT52itepDbl8V','_blank')"><span>See more →</span></button>
+      </div>
+
+      <div class="teacher-card sr sr-d3">
+        <img src="images/teacher-3.jpg" alt="Teacher 3" class="teacher-card__photo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="teacher-card__photo-fallback" style="display:none">👩‍🏫</div>
+        <div class="teacher-card__name">Adriana</div>
+        <div class="teacher-card__city">Bogotá &nbsp;<svg width="14" height="10" viewBox="0 0 18 13" style="vertical-align:middle"><rect width="18" height="5" fill="#FCD116"/><rect y="5" width="18" height="4" fill="#003087"/><rect y="9" width="18" height="4" fill="#CE1126"/></svg></div>
+        <div class="teacher-card__phrase">"Spanish is a living language. I make sure every student feels that from the very first class."</div>
+        <div class="teacher-card__tags">
+          <span class="teacher-card__tag">Advanced</span>
+          <span class="teacher-card__tag">Literature</span>
+          <span class="teacher-card__tag">DELE prep</span>
+        </div>
+        <button class="teacher-card__btn" onclick="window.open('https://youtu.be/h0NuFE4aVtA?si=ub1PNUoNLFOBTJvO','_blank')"><span>See more →</span></button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     6 · TESTIMONIALS
+═══════════════════════════════════════════════ -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials__inner">
+    <div class="testimonials__head">
+      <div class="chip">What our students say</div>
+      <h2 class="testimonials__title sr sr-d1">Real <span class="testi-title-accent">stories</span>, real progress.</h2>
+      <p class="testimonials__sub sr sr-d2">See how students from around the world experience Spanish with us.</p>
+    </div>
+    <div class="testimonials__grid">
+
+      <!-- Featured card — populated by JS -->
+      <div class="testi-featured sr sr-d1" id="testi-featured"></div>
+
+      <!-- Small cards column -->
+      <div class="testimonials__col" id="testi-col"></div>
+
+    </div>
+    <div class="testimonials__dots" id="testi-dots" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     7 · HOW IT WORKS
+═══════════════════════════════════════════════ -->
+<section class="how" id="how">
+  <div class="how__inner">
+    <div class="how__head">
+      <div class="chip">Getting started</div>
+      <h2 class="how__title sr sr-d1">Simple from day one.</h2>
+      <p class="how__sub sr sr-d2">No complicated sign-ups. No tests. Just a conversation to understand who you are and what you need.</p>
+    </div>
+    <div class="how__steps">
+      <div class="how-step sr sr-d1">
+        <div class="how-step__circle" aria-hidden="true">1</div>
+        <h3 class="how-step__title">Book your free intro session</h3>
+        <p class="how-step__text">We'll set up a 30-minute conversation at a time that works for you.</p>
+      </div>
+      <div class="how-step sr sr-d2">
+        <div class="how-step__circle" aria-hidden="true">2</div>
+        <h3 class="how-step__title">Let's get to know each other</h3>
+        <p class="how-step__text">We talk about your goals, your level and what you want to achieve. No pressure.</p>
+      </div>
+      <div class="how-step sr sr-d3">
+        <div class="how-step__circle" aria-hidden="true">3</div>
+        <h3 class="how-step__title">Get your custom plan</h3>
+        <p class="how-step__text">A learning path built around your goals and ready to evolve as you grow.</p>
+      </div>
+      <div class="how-step sr sr-d4">
+        <div class="how-step__circle" aria-hidden="true">4</div>
+        <h3 class="how-step__title">Start speaking Spanish</h3>
+        <p class="how-step__text">Your first class, your teacher, your pace. From here, it only gets better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     8 · FINAL CTA
+═══════════════════════════════════════════════ -->
+<section class="cta-section" id="cta">
+  <div class="cta-section__inner">
+    <div class="cta-stack sr">
+      <div class="cta-stack__back" aria-hidden="true"></div>
+      <div class="cta-stack__front">
+        <img src="images/students.jpg" alt="" class="cta-stack__img" role="presentation"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="cta-stack__img-fallback" style="display:none"></div>
+        <div class="cta-stack__overlay" aria-hidden="true"></div>
+        <div class="cta-stack__content">
+          <h2 class="cta-stack__title">Ready to start your Spanish journey?</h2>
+          <p class="cta-stack__sub">Let's find the path that fits you best.</p>
+          <a href="https://wa.me/573001672889?text=Hi!%20I'd%20like%20to%20book%20my%20free%20intro%20session%20with%20Just%20Spanish." class="cta-btn-white" target="_blank" rel="noopener noreferrer">
+            Book my free intro session →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     9 · FAQ
+═══════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="faq__inner">
+
+    <div class="faq__left">
+      <div class="chip">FAQ</div>
+      <h2 class="faq__title sr sr-d1">Questions?<br/>We have answers.</h2>
+      <p class="faq__desc sr sr-d2">Can't find what you're looking for? Write to us directly. We're happy to help.</p>
+      <a href="https://wa.me/573001672889?text=Hi!%20I%20have%20a%20question%20about%20Just%20Spanish." class="faq-cta sr sr-d3" target="_blank" rel="noopener noreferrer">
+        Ask us directly →
+      </a>
+    </div>
+
+    <div class="faq__list" role="list">
+
+      <div class="faq-item open sr" role="listitem">
+        <button class="faq-item__btn" aria-expanded="true" onclick="toggleFaq(this)">
+          What platform do you use for online classes?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">We mainly use Microsoft Teams for our online sessions. If you prefer a different platform, we're happy to adapt — we figure it out together before your first class.</div>
+      </div>
+
+      <div class="faq-item sr sr-d1" role="listitem">
+        <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
+          How long is each class?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">Each session is 60 effective minutes. We recommend keeping 1h15 available to account for login time, a warm-up conversation, and any unexpected technical hiccups.</div>
+      </div>
+
+      <div class="faq-item sr sr-d2" role="listitem">
+        <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
+          I'm a complete beginner. Is that okay?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">Absolutely. We work with students at all levels, from complete beginners to advanced speakers. Your teacher designs everything from exactly where you are right now — no prior knowledge needed.</div>
+      </div>
+
+      <div class="faq-item sr sr-d3" role="listitem">
+        <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
+          Can I reschedule or cancel a class?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">Yes. We understand that life happens. Classes can be rescheduled with prior notice. We'll always work with you to find a time that fits your week.</div>
+      </div>
+
+      <div class="faq-item sr sr-d4" role="listitem">
+        <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
+          What if I don't connect with my teacher?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">The teacher-student connection is everything to us. If after your intro session you don't feel the right fit, we'll match you with another teacher — no questions asked.</div>
+      </div>
+
+      <div class="faq-item sr" role="listitem">
+        <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
+          How does payment work?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">Payment is made upfront per package for Spanish Your Way (4, 8 or 12 classes), or monthly for Spanish Steps. We'll share all the details and payment methods during your free intro session.</div>
+      </div>
+
+      <div class="faq-item sr sr-d1" role="listitem">
+        <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
+          Where do in-person classes in Bogotá take place?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">We figure it out together. A coworking space, a café, your home, or your office — we meet wherever you feel most comfortable in Bogotá.</div>
+      </div>
+
+      <div class="faq-item sr sr-d2" role="listitem">
+        <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
+          Can I switch programs?
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__answer">Of course. If at any point you feel a different program would serve you better, we'll make the switch together. Your progress always comes first.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     10 · FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+
+      <div>
+        <div class="footer__logo">
+          <img src="logo-white.png" alt="Just Spanish Academy" style="height: 150px;">
+        </div>
+        <p class="footer__brand-desc">One-to-one online Spanish classes with native Colombian teachers. Designed around your life, your goals and your story.</p>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Navigation</div>
+        <div class="footer__links">
+          <a href="#programs" class="footer__link">Programs</a>
+          <a href="#teachers" class="footer__link">Teachers</a>
+          <a href="#testimonials" class="footer__link">Reviews</a>
+          <a href="#faq" class="footer__link">FAQ</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <div class="footer__contact">
+          <div class="footer__contact-item">
+            <a href="https://wa.me/573001672889?text=Hi!%20I'd%20like%20to%20get%20in%20touch%20with%20Just%20Spanish." target="_blank" rel="noopener noreferrer" class="footer__contact-link">
+              <span class="footer__contact-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+              (+57) 300 709 3483
+            </a>
+          </div>
+          <div class="footer__contact-item">
+            <a href="mailto:contact@justspanish.com.co" class="footer__contact-link">
+              <span class="footer__contact-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4A9EDB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              contact@justspanish.com.co
+            </a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E85D4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            Bogotá, Colombia 🇨🇴
+          </div>
+        </div>
+        <div class="footer__socials">
+          <a href="https://instagram.com/justspanishacademy" class="footer__social" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#f09433"/>
+                  <stop offset="50%" stop-color="#e1306c"/>
+                  <stop offset="100%" stop-color="#833ab4"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#ig-gradient)" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4" stroke="url(#ig-gradient)" stroke-width="1.8"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61576787454054" class="footer__social" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__legal">
+        <span>© 2025 Just Spanish Academy. All rights reserved.</span>
+        <a href="#" class="footer__legal-link">Privacy Policy</a>
+      </div>
+      <div class="footer__tagline">Your goals · Your pace · Your way</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal" aria-modal="true" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" id="close-modal" aria-label="Close">×</button>
+    <div class="chip modal__eyebrow">Free intro session</div>
+    <h3 class="modal__title" id="modal-title">Your free 30-minute intro session</h3>
+    <p class="modal__desc">A relaxed conversation with one of our teachers. We'll talk about your goals, your interests, and your current level to find the learning path that suits you best.</p>
+    <div class="modal__perks">
+      <div class="modal__perk"><span class="modal__perk-icon">✓</span> No tests, no pressure</div>
+      <div class="modal__perk"><span class="modal__perk-icon">✓</span> No commitment required</div>
+      <div class="modal__perk"><span class="modal__perk-icon">✓</span> 30 minutes, completely free</div>
+      <div class="modal__perk"><span class="modal__perk-icon">✓</span> Online or in Bogotá</div>
+    </div>
+    <a href="https://wa.me/573001672889?text=Hi!%20I'd%20like%20to%20book%20my%20free%20intro%20session%20with%20Just%20Spanish." class="modal__cta" target="_blank" rel="noopener noreferrer">
+      📲 Book on WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+  /* ── Header: elevation + scrollspy (siempre visible) ── */
+  const header = document.getElementById('header');
+  const navLinks = document.querySelectorAll('.nav__link');
+  const sections = document.querySelectorAll('section[id]');
+  let ticking = false;
+
+  function updateHeader() {
+    const scrollY = window.scrollY;
+    // Elevation
+    header.classList.toggle('scrolled', scrollY > 20);
+    // Scrollspy — highlight active section link
+    let current = '';
+    sections.forEach(sec => {
+      if (scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href').replace('#', '');
+      link.classList.toggle('active', href === current);
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateHeader); ticking = true; }
+  }, { passive: true });
+
+  /* ── Hamburger menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.sr').forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll('.sr').forEach(el => el.classList.add('in'));
+  }
+
+  /* ── FAQ accordion ── */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    item.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', !isOpen);
+  }
+
+  /* ── Testimonials — click to feature ── */
+  const testimonials = [
+    {
+      quote: '"I\'d tried apps, group classes and online courses before — nothing clicked. Just Spanish was completely different. My teacher understood exactly what I needed and built every class around my actual life."',
+      emoji: '🧑', name: 'Student name', from: '🇺🇸 United States · Spanish Your Way'
+    },
+    {
+      quote: '"Within two months I went from barely ordering coffee to having real conversations. The cultural context made all the difference — I wasn\'t just learning grammar, I was learning how people actually speak."',
+      emoji: '👩', name: 'Student name', from: '🇩🇪 Germany · Spanish Steps'
+    },
+    {
+      quote: '"The flexibility is unmatched. My teacher always adapts — she knows exactly what I need each week. It doesn\'t feel like a class, it feels like a conversation with someone who\'s genuinely invested in my progress."',
+      emoji: '🧑', name: 'Student name', from: '🇨🇦 Canada · Spanish Your Way'
+    }
+  ];
+
+  let featuredIdx = 0;
+
+  function renderTestimonials() {
+    const feat = testimonials[featuredIdx];
+    const featured = document.getElementById('testi-featured');
+    const col = document.getElementById('testi-col');
+    const dots = document.getElementById('testi-dots');
+
+    // Animate out
+    featured.style.opacity = '0';
+    featured.style.transform = 'translateY(8px)';
+
+    setTimeout(() => {
+      // Update featured
+      document.getElementById('testi-featured').innerHTML = `
+        <div class="testi-featured__content">
+          <p class="testi-featured__quote">${feat.quote}</p>
+          <div class="testi-featured__author">
+            <div class="testi-author-photo-fallback" style="display:flex">${feat.emoji}</div>
+            <div>
+              <div class="testi-author-name">${feat.name}</div>
+              <div class="testi-author-from">${feat.from}</div>
+            </div>
+          </div>
+        </div>`;
+
+      // Animate in
+      featured.style.transition = 'opacity .4s ease, transform .4s ease';
+      featured.style.opacity = '1';
+      featured.style.transform = 'translateY(0)';
+
+      // Render small cards
+      col.innerHTML = '';
+      testimonials.forEach((t, i) => {
+        if (i === featuredIdx) return;
+        const card = document.createElement('div');
+        card.className = 'testi-small';
+        card.innerHTML = `
+          <p class="testi-small__quote">${t.quote}</p>
+          <div class="testi-small__author">
+            <div class="testi-sm-photo-fallback">${t.emoji}</div>
+            <div>
+              <div class="testi-sm-name">${t.name}</div>
+              <div class="testi-sm-from">${t.from}</div>
+            </div>
+          </div>`;
+        card.addEventListener('click', () => {
+          featuredIdx = i;
+          renderTestimonials();
+        });
+        col.appendChild(card);
+      });
+
+      // Dots
+      dots.innerHTML = '';
+      testimonials.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === featuredIdx ? ' dot--on' : '');
+        d.addEventListener('click', () => { featuredIdx = i; renderTestimonials(); });
+        dots.appendChild(d);
+      });
+    }, 200);
+
+    featured.style.transition = 'opacity .2s ease, transform .2s ease';
+  }
+
+  renderTestimonials();
+  const modal = document.getElementById('modal');
+  const openBtn = document.getElementById('open-modal');
+  const closeBtn = document.getElementById('close-modal');
+
+  function openModal() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    openBtn.focus();
+  }
+  openBtn && openBtn.addEventListener('click', openModal);
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+</script>
+</body>
+</html>
