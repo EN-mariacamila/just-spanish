@@ -1057,7 +1057,7 @@
 
     /* ── Mobile (≤640px) ── */
     @media (max-width: 640px) {
-      h1 { font-size: 4rem }
+      h1 { font-size: 6rem }
       h2 { font-size: 1.5rem }
 
       /* Logo más pequeño en mobile */
@@ -1068,6 +1068,7 @@
         display: inline-flex !important;
         font-size: .75rem !important;
         padding: .5rem 1rem !important;
+        margin-left: auto;
       }
 
       /* Hero: ocultar foto */
@@ -1098,11 +1099,11 @@
       .teachers__grid { grid-template-columns: 1fr }
 
       /* Hamburger: corregir gap del header para que no se corte */
-      .header__inner { gap: 1rem }
+      .header__inner { gap: .5rem; overflow: visible; }
       .hamburger { margin-right: 0 }
 
       /* Hero: más padding inferior para separar del why */
-      .hero { min-height: unset; padding-top: 2.5rem; padding-bottom: 4rem }
+      .hero { min-height: unset; padding-top: 3.5rem; padding-bottom: 4rem }
       .hero__inner { padding: 0 }
 
       /* Programs: lista de 4 items en columna */
