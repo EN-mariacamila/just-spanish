@@ -172,7 +172,7 @@
     }
         .header__inner {
       max-width: 1200px; margin: 0 auto;
-      height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
     }
     .logo { display: flex; align-items: center; gap: .65rem; flex-shrink: 0 }
     .logo__icon {
@@ -192,7 +192,7 @@
 
     .nav { display: flex; align-items: center; gap: 2rem }
     .nav__link {
-      font-size: .875rem; color: var(--text-2);
+      font-size: 1rem; color: var(--text-2);
       transition: color .22s; white-space: nowrap;
       position: relative; padding-bottom: 2px;
     }
@@ -246,7 +246,7 @@
     /* ═══════════════════════════════════════════════
        PAGE WRAPPER
     ═══════════════════════════════════════════════ */
-    .page { padding-top: 72px }
+    .page { padding-top: 88px }
 
     /* ═══════════════════════════════════════════════
        2 · HERO
@@ -254,7 +254,7 @@
     .hero {
       background: var(--white);
       padding: 0 clamp(1rem, 4vw, 3rem);
-      min-height: calc(100vh - 72px);
+      min-height: calc(100vh - 88px);
       display: flex; align-items: center;
     }
     .hero__inner {
@@ -348,7 +348,7 @@
     }
     .why__left {
       display: flex; flex-direction: column;
-      position: sticky; top: calc(72px + 2.5rem);
+      position: sticky; top: calc(88px + 2.5rem);
     }
     .why__eyebrow {
       align-self: flex-start;
@@ -1150,7 +1150,7 @@
 <header class="header" id="header">
   <div class="header__inner">
    <a href="#" class="logo" aria-label="Just Spanish Academy">
-  <img src="logo-dark.png" alt="Just Spanish Academy" style="height: 80px;">
+  <img src="logo-dark.png" alt="Just Spanish Academy" style="height: 120px;">
     </a>
     <nav class="nav" aria-label="Main navigation">
       <a href="#programs" class="nav__link">Programs</a>
@@ -1635,6 +1635,7 @@
       </div>
 
       <div class="footer__nav-col">
+        <div class="footer__col-title">Navigation</div>
         <div class="footer__links">
           <a href="#programs" class="footer__link">Programs</a>
           <a href="#teachers" class="footer__link">Teachers</a>
