@@ -1057,7 +1057,7 @@
 
     /* ── Mobile (≤640px) ── */
     @media (max-width: 640px) {
-      h1 { font-size: 6rem }
+      h1 { font-size: 2.5rem }
       h2 { font-size: 1.5rem }
 
       /* Logo más pequeño en mobile */
@@ -1068,49 +1068,42 @@
         display: inline-flex !important;
         font-size: .75rem !important;
         padding: .5rem 1rem !important;
-        margin-left: auto;
       }
+      /* Hamburger */
+      .header__inner { gap: .5rem }
+      .hamburger { margin-right: 0 }
 
-      /* Hero: ocultar foto */
+      /* Hero */
+      .hero { min-height: unset; padding-top: 3rem; padding-bottom: 4rem }
+      .hero__inner { grid-template-columns: 1fr; padding: 0 }
       .hero__visual { display: none }
-      .hero__inner { grid-template-columns: 1fr }
+      .hero__btns { flex-direction: column; align-items: stretch }
+      .hero__cta-primary, .hero__cta-secondary { width: 100%; text-align: center }
 
-      /* Why: espaciado reducido */
+      /* Why */
       .why { padding-top: 2rem }
       .why__inner { gap: 1.5rem; padding-bottom: 2rem }
       .why__cards { gap: .625rem }
-
-      /* Why cards compactas */
       .why-card { padding: .875rem 1rem; gap: .75rem }
       .why-card__icon { width: 36px; height: 36px }
       .why-card__icon svg { width: 18px; height: 18px }
       .why-card__title { font-size: .875rem }
       .why-card__text { font-size: .8125rem; color: var(--text-2) }
 
-      /* Corregir texto verde en How, FAQ */
-      .how-step__text { color: var(--text-2) }
-      .faq-item__answer { color: var(--text-2) }
-
-      /* Hero botones apilados */
-      .hero__btns { flex-direction: column; align-items: stretch }
-      .hero__cta-primary, .hero__cta-secondary { width: 100%; text-align: center }
-
-      /* Teachers */
-      .teachers__grid { grid-template-columns: 1fr }
-
-      /* Hamburger: corregir gap del header para que no se corte */
-      .header__inner { gap: .5rem; overflow: visible; }
-      .hamburger { margin-right: 0 }
-
-      /* Hero: más padding inferior para separar del why */
-      .hero { min-height: unset; padding-top: 3.5rem; padding-bottom: 4rem }
-      .hero__inner { padding: 0 }
-
-      /* Programs: lista de 4 items en columna */
+      /* Programs */
       .programs__both { flex-direction: column; gap: .5rem; width: 100% }
       .both-item { width: 100% }
 
-      /* Carrusel mobile */
+      /* Teachers */
+      .teachers__grid { display: flex !important; flex-direction: column; gap: .875rem }
+      .teachers { padding: 2.5rem clamp(1rem, 4vw, 3rem) }
+      .teacher-card { padding: 1.25rem 1rem; gap: .5rem }
+      .teacher-card__photo,
+      .teacher-card__photo-fallback { width: 80px; height: 80px; font-size: 1.6rem }
+      .teacher-card__phrase { font-size: .8125rem }
+      .teacher-card__btn { padding: .5rem 1rem; font-size: .8125rem }
+
+      /* Carrusel testimonios */
       .testi-track { grid-template-columns: 1fr }
       .testi-card:not(.testi-card--center) { display: none }
       .testi-card--center {
@@ -1129,16 +1122,15 @@
       .testi-card--center::before { color: rgba(0,0,0,.04) }
       .testi-arrow { width: 36px; height: 36px }
 
-      /* FAQ show more: texto centrado */
-      .faq-show-more { justify-content: center; width: 100% }
-
-      /* Programs */
-      .programs__both { gap: .75rem }
-
       /* How */
       .how__steps { grid-template-columns: 1fr; gap: 2rem }
+      .how-step__text { color: var(--text-2) }
 
-      /* Footer: ocultar columna de Navigation */
+      /* FAQ */
+      .faq-item__answer { color: var(--text-2) }
+      .faq-show-more { justify-content: center; width: 100% }
+
+      /* Footer */
       .footer__nav-col { display: none }
       .footer__grid { grid-template-columns: 1fr; gap: 2rem }
       .footer { padding: 3rem clamp(1rem, 4vw, 3rem) 2rem }
