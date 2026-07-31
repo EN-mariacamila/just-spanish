@@ -172,7 +172,7 @@
     }
         .header__inner {
       max-width: 1200px; margin: 0 auto;
-      height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
     }
     .logo { display: flex; align-items: center; gap: .65rem; flex-shrink: 0 }
     .logo__icon {
@@ -246,7 +246,7 @@
     /* ═══════════════════════════════════════════════
        PAGE WRAPPER
     ═══════════════════════════════════════════════ */
-    .page { padding-top: 68px }
+    .page { padding-top: 72px }
 
     /* ═══════════════════════════════════════════════
        2 · HERO
@@ -254,7 +254,7 @@
     .hero {
       background: var(--white);
       padding: 0 clamp(1rem, 4vw, 3rem);
-      min-height: calc(100vh - 68px);
+      min-height: calc(100vh - 72px);
       display: flex; align-items: center;
     }
     .hero__inner {
@@ -348,7 +348,7 @@
     }
     .why__left {
       display: flex; flex-direction: column;
-      position: sticky; top: calc(68px + 2.5rem);
+      position: sticky; top: calc(72px + 2.5rem);
     }
     .why__eyebrow {
       align-self: flex-start;
@@ -522,6 +522,19 @@
        5 · TEACHERS
     ═══════════════════════════════════════════════ */
     .teachers { background: var(--carbon-dark); padding: 4rem clamp(1rem, 4vw, 3rem); position: relative; overflow: hidden }
+
+    /* Carrusel de profesores — desactivado, volvemos a columna */
+    .teachers__carousel { display: none }
+    .teachers__dots { display: none }
+    @media (max-width: 640px) {
+      .teachers__grid { display: flex !important; flex-direction: column; gap: .875rem }
+      .teachers { padding: 2.5rem clamp(1rem, 4vw, 3rem) }
+      .teacher-card { padding: 1.25rem 1rem; gap: .5rem }
+      .teacher-card__photo,
+      .teacher-card__photo-fallback { width: 80px; height: 80px; font-size: 1.6rem }
+      .teacher-card__phrase { font-size: .8125rem }
+      .teacher-card__btn { padding: .5rem 1rem; font-size: .8125rem }
+    }
     .teachers::after {
       content: ''; position: absolute; bottom: -80px; right: -80px;
       width: 360px; height: 360px; border-radius: 50%;
@@ -596,87 +609,145 @@
     .teacher-card__btn:hover::before { transform: scaleX(1) }
 
     /* ═══════════════════════════════════════════════
-       6 · TESTIMONIALS
+       6 · TESTIMONIALS — carrusel horizontal
     ═══════════════════════════════════════════════ */
-    .testimonials { background: #eef5e4; padding: 3rem clamp(1rem, 4vw, 3rem) 3rem }
+    .testimonials { background: #eef5e4; padding: 3rem clamp(1rem, 4vw, 3rem) 3.5rem }
     .testimonials__inner { max-width: 1200px; margin: 0 auto }
     .testimonials__head { margin-bottom: 2.5rem }
-    .testimonials__eyebrow { margin-bottom: .75rem }
     .testimonials__title { color: var(--carbon); margin-bottom: .5rem; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.12 }
     .testi-title-accent { color: var(--green) }
     .testimonials__sub { font-size: .9375rem; color: var(--text-2) }
 
-    .testimonials__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.25rem }
+    /* ── Carrusel stage ── */
+    .testi-carousel {
+      position: relative;
+      display: flex; align-items: center; gap: 1rem;
+    }
 
-    /* Featured card — green */
-    .testi-featured {
-      background: var(--green); border-radius: var(--r-xl);
-      padding: 2rem 2.5rem; display: flex; flex-direction: column;
-      gap: 0; position: relative; overflow: hidden;
-      justify-content: center;
-    }
-    .testi-featured::before {
-      content: '\201C'; font-family: Georgia, serif;
-      font-size: 11rem; color: rgba(255,255,255,.1);
-      position: absolute; top: 20%; left: 1rem;
-      line-height: 1; pointer-events: none; z-index: 0;
-    }
-    .testi-featured__content {
-      position: relative; z-index: 1;
-      display: flex; flex-direction: column; gap: 1.5rem;
-    }
-    .testi-featured__quote {
-      font-size: .9375rem; color: var(--white); line-height: 1.72;
-      font-style: italic; position: relative; z-index: 1;
-      text-align: left;
-    }
-    .testi-featured__author { display: flex; align-items: center; justify-content: flex-start; gap: .875rem }
-    .testi-author-photo {
-      width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
-      border: 2px solid rgba(255,255,255,.3);
-      background: rgba(255,255,255,.2); flex-shrink: 0;
-    }
-    .testi-author-photo-fallback {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(255,255,255,.2); border: 2px solid rgba(255,255,255,.3);
+    /* Botones de flecha */
+    .testi-arrow {
+      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid rgba(113,149,71,.35);
+      background: var(--white);
+      color: var(--green);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; flex-shrink: 0;
+      cursor: pointer; transition: all .25s var(--ease);
+      z-index: 2;
     }
-    .testi-author-name { font-size: .9375rem; font-weight: 500; color: var(--white) }
-    .testi-author-from { font-size: .8125rem; color: rgba(255,255,255,.6) }
+    .testi-arrow:hover {
+      background: var(--green); color: var(--white);
+      border-color: var(--green);
+      box-shadow: 0 4px 16px rgba(113,149,71,.28);
+    }
+    .testi-arrow svg { width: 16px; height: 16px; flex-shrink: 0 }
 
-    /* Small cards column */
-    .testimonials__col { display: flex; flex-direction: column; gap: 1.25rem }
-    .testi-small {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r-lg); padding: 1.5rem;
-      flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem;
-      transition: transform .3s var(--ease), box-shadow .3s, border-color .3s;
+    /* Track: las 3 tarjetas visibles */
+    .testi-track {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.22fr 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* Tarjeta base */
+    .testi-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 1.75rem 1.5rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
       cursor: pointer;
+      transition: transform .38s var(--ease), box-shadow .38s var(--ease),
+                  opacity .38s var(--ease), border-color .3s;
+      opacity: .72;
+      transform: scale(.94);
+      position: relative; overflow: hidden;
     }
-    .testi-small:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(113,149,71,.1); border-color: rgba(113,149,71,.3) }
-    .testi-small__quote {
-      font-size: .9375rem; color: var(--text-2); line-height: 1.72; font-style: italic;
+    .testi-card:hover { opacity: .88; border-color: rgba(113,149,71,.25) }
+
+    /* Tarjeta central — destacada */
+    .testi-card--center {
+      background: var(--green);
+      border-color: transparent;
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 12px 48px rgba(113,149,71,.28);
+      cursor: default;
     }
-    .testi-small__author { display: flex; align-items: center; gap: .75rem }
-    .testi-sm-photo {
-      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
-      border: 1.5px solid var(--green-mid);
-      background: var(--green-pale); flex-shrink: 0;
+    .testi-card--center:hover { opacity: 1; border-color: transparent }
+
+    /* Comilla decorativa */
+    .testi-card::before {
+      content: '\201C'; font-family: Georgia, serif;
+      font-size: 8rem; color: rgba(0,0,0,.04);
+      position: absolute; top: .5rem; left: .75rem;
+      line-height: 1; pointer-events: none;
     }
-    .testi-sm-photo-fallback {
-      width: 36px; height: 36px; border-radius: 50%;
+    .testi-card--center::before { color: rgba(255,255,255,.1) }
+
+    /* Quote */
+    .testi-card__quote {
+      font-size: .9rem; color: var(--text-2);
+      line-height: 1.72; font-style: italic;
+      position: relative; z-index: 1;
+    }
+    .testi-card--center .testi-card__quote {
+      font-size: .9375rem; color: var(--white);
+    }
+
+    /* Author */
+    .testi-card__author {
+      display: flex; align-items: center; gap: .75rem;
+      position: relative; z-index: 1; margin-top: auto;
+    }
+    .testi-card__avatar {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
       background: var(--green-pale); border: 1.5px solid var(--green-mid);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
+      font-size: 1.1rem;
     }
-    .testi-sm-name { font-size: .875rem; font-weight: 500; color: var(--carbon) }
-    .testi-sm-from { font-size: .8125rem; color: var(--text-3) }
+    .testi-card--center .testi-card__avatar {
+      background: rgba(255,255,255,.2);
+      border-color: rgba(255,255,255,.3);
+    }
+    .testi-card__name { font-size: .875rem; font-weight: 500; color: var(--carbon) }
+    .testi-card--center .testi-card__name { color: var(--white) }
+    .testi-card__from { font-size: .8rem; color: var(--text-3) }
+    .testi-card--center .testi-card__from { color: rgba(255,255,255,.65) }
 
     /* Dots */
-    .testimonials__dots { display: flex; justify-content: center; gap: .5rem; margin-top: 1.5rem }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,.15) }
+    .testimonials__dots {
+      display: flex; justify-content: center; gap: .5rem; margin-top: 1.75rem;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,.15); cursor: pointer; transition: all .25s }
     .dot--on { background: var(--green); width: 18px; border-radius: 3px }
+
+    /* Responsive: en mobile mostrar sólo la tarjeta central */
+    /* FAQ — show more button */
+    .faq-show-more {
+      display: none; /* solo en mobile */
+    }
+    @media (max-width: 640px) {
+      .faq-item--extra { display: none }
+      .faq-item--extra.faq-extra-visible { display: block }
+      .faq-show-more {
+        display: flex; align-items: center; gap: .5rem;
+        margin-top: .5rem;
+        background: none; border: 1.5px solid var(--green);
+        color: var(--green); border-radius: 100px;
+        font-family: 'DM Sans', sans-serif; font-size: .875rem;
+        padding: .6rem 1.25rem; cursor: pointer;
+        transition: all .25s var(--ease);
+      }
+      .faq-show-more:hover { background: var(--green); color: var(--white) }
+      .faq-show-more.open span { display: inline-block; transform: rotate(180deg) }
+    }
+    .hero__br { display: inline }
+    @media (max-width: 640px) {
+      .hero__br { display: block }
+    }
 
     /* ═══════════════════════════════════════════════
        7 · HOW IT WORKS
@@ -981,22 +1052,92 @@
       h1 { font-size: 1.9rem }
       h2 { font-size: 1.5rem }
 
+      /* Logo más pequeño en mobile */
+      .logo img { height: 56px !important }
+
+      /* Get in touch visible en mobile */
+      .header__cta {
+        display: inline-flex !important;
+        font-size: .75rem !important;
+        padding: .5rem 1rem !important;
+      }
+
+      /* Hero: ocultar foto */
+      .hero__visual { display: none }
+      .hero__inner { grid-template-columns: 1fr }
+
+      /* Why: espaciado reducido */
+      .why { padding-top: 2rem }
+      .why__inner { gap: 1.5rem; padding-bottom: 2rem }
+      .why__cards { gap: .625rem }
+
+      /* Why cards compactas */
+      .why-card { padding: .875rem 1rem; gap: .75rem }
+      .why-card__icon { width: 36px; height: 36px }
+      .why-card__icon svg { width: 18px; height: 18px }
+      .why-card__title { font-size: .875rem }
+      .why-card__text { font-size: .8125rem; color: var(--text-2) }
+
+      /* Corregir texto verde en How, FAQ */
+      .how-step__text { color: var(--text-2) }
+      .faq-item__answer { color: var(--text-2) }
+
+      /* Hero botones apilados */
       .hero__btns { flex-direction: column; align-items: stretch }
       .hero__cta-primary, .hero__cta-secondary { width: 100%; text-align: center }
 
+      /* Teachers */
       .teachers__grid { grid-template-columns: 1fr }
-      .testimonials__col { flex-direction: column }
 
+      /* Hamburger: corregir gap del header para que no se corte */
+      .header__inner { gap: .5rem }
+      .hamburger { margin-right: 0 }
+
+      /* Hero: más padding inferior para separar del why */
+      .hero { min-height: unset; padding-top: 2rem; padding-bottom: 4rem }
+      .hero__inner { padding: 0 }
+
+      /* Programs: lista de 4 items en columna */
+      .programs__both { flex-direction: column; gap: .5rem; width: 100% }
+      .both-item { width: 100% }
+
+      /* Carrusel mobile */
+      .testi-track { grid-template-columns: 1fr }
+      .testi-card:not(.testi-card--center) { display: none }
+      .testi-card--center {
+        transform: scale(1); opacity: 1;
+        background: var(--white);
+        border: 1.5px solid rgba(113,149,71,.35);
+        box-shadow: 0 4px 20px rgba(113,149,71,.1);
+      }
+      .testi-card--center .testi-card__quote { color: var(--text-2) }
+      .testi-card--center .testi-card__name { color: var(--carbon) }
+      .testi-card--center .testi-card__from { color: var(--text-3) }
+      .testi-card--center .testi-card__avatar {
+        background: var(--green-pale);
+        border-color: var(--green-mid);
+      }
+      .testi-card--center::before { color: rgba(0,0,0,.04) }
+      .testi-arrow { width: 36px; height: 36px }
+
+      /* FAQ show more: texto centrado */
+      .faq-show-more { justify-content: center; width: 100% }
+
+      /* Programs */
       .programs__both { gap: .75rem }
+
+      /* How */
       .how__steps { grid-template-columns: 1fr; gap: 2rem }
 
-      .testi-featured { padding: 2rem 1.5rem }
+      /* Footer: ocultar columna de Navigation */
+      .footer__nav-col { display: none }
+      .footer__grid { grid-template-columns: 1fr; gap: 2rem }
+      .footer { padding: 3rem clamp(1rem, 4vw, 3rem) 2rem }
+      .footer__logo-img { height: 90px !important }
 
-      .footer__grid { grid-template-columns: 1fr; gap: 2.5rem }
-
+      /* CTA y modal */
       .cta-stack__content { padding: 2.5rem 1.5rem }
       .cta-stack__title { font-size: 1.5rem }
-
       .modal-card { padding: 2rem 1.5rem }
     }
   </style>
@@ -1009,7 +1150,7 @@
 <header class="header" id="header">
   <div class="header__inner">
    <a href="#" class="logo" aria-label="Just Spanish Academy">
-  <img src="logo-dark.png" alt="Just Spanish Academy" style="height: 100px;">
+  <img src="logo-dark.png" alt="Just Spanish Academy" style="height: 80px;">
     </a>
     <nav class="nav" aria-label="Main navigation">
       <a href="#programs" class="nav__link">Programs</a>
@@ -1029,11 +1170,6 @@
     <a href="#teachers" class="mobile-nav__link">Teachers</a>
     <a href="#testimonials" class="mobile-nav__link">Reviews</a>
     <a href="#faq" class="mobile-nav__link">FAQ</a>
-    <div class="mobile-nav__cta">
-      <a href="https://wa.me/573001672889?text=Hi!%20I'd%20like%20to%20get%20in%20touch%20with%20Just%20Spanish." class="btn-outline" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center">
-        <span>Get in touch</span>
-      </a>
-    </div>
   </nav>
 </header>
 
@@ -1045,7 +1181,7 @@
 <section class="hero" id="home">
   <div class="hero__inner">
     <div class="hero__content">
-      <h1 class="hero__title sr">Spanish built around <span class="hero__title-green">you</span></h1>
+      <h1 class="hero__title sr">Spanish built<span class="hero__br"> </span>around <span class="hero__title-green">you</span></h1>
       <p class="hero__desc sr sr-d1">Personalized 1:1 lessons with certified native teachers, designed around your goals, your pace and the life you want to live in Spanish — online or in Bogotá.</p>
       <div class="hero__btns sr sr-d2">
         <button class="hero__cta-primary" id="open-modal">Book your free intro session</button>
@@ -1235,7 +1371,7 @@
     <div class="teachers__grid">
 
       <div class="teacher-card sr sr-d1">
-        <img src="images/teacher-1.jpg" alt="Teacher 1" class="teacher-card__photo"
+        <img src="images/maria-camila.jpg" alt="María Camila, Spanish teacher at Just Spanish Academy" class="teacher-card__photo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="teacher-card__photo-fallback" style="display:none">👩‍🏫</div>
         <div class="teacher-card__name">María Camila</div>
@@ -1250,7 +1386,7 @@
       </div>
 
       <div class="teacher-card sr sr-d2">
-        <img src="images/teacher-2.jpg" alt="Teacher 2" class="teacher-card__photo"
+        <img src="images/mauricio.jpg" alt="Mauricio, Spanish teacher at Just Spanish Academy" class="teacher-card__photo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="teacher-card__photo-fallback" style="display:none">👨‍🏫</div>
         <div class="teacher-card__name">Mauricio</div>
@@ -1265,7 +1401,7 @@
       </div>
 
       <div class="teacher-card sr sr-d3">
-        <img src="images/teacher-3.jpg" alt="Teacher 3" class="teacher-card__photo"
+        <img src="images/adriana.jpg" alt="Adriana, Spanish teacher at Just Spanish Academy" class="teacher-card__photo"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="teacher-card__photo-fallback" style="display:none">👩‍🏫</div>
         <div class="teacher-card__name">Adriana</div>
@@ -1280,11 +1416,28 @@
       </div>
 
     </div>
+
+    <!-- Carrusel mobile de profesores -->
+    <div class="teachers__carousel" id="teachers-carousel">
+      <button class="testi-arrow" id="teachers-prev" aria-label="Previous teacher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+      <div class="teachers__carousel-track" id="teachers-track"></div>
+      <button class="testi-arrow" id="teachers-next" aria-label="Next teacher">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+    <div class="teachers__dots" id="teachers-dots" aria-hidden="true"></div>
+
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     6 · TESTIMONIALS
+     6 · TESTIMONIALS — carrusel horizontal
 ═══════════════════════════════════════════════ -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials__inner">
@@ -1293,15 +1446,26 @@
       <h2 class="testimonials__title sr sr-d1">Real <span class="testi-title-accent">stories</span>, real progress.</h2>
       <p class="testimonials__sub sr sr-d2">See how students from around the world experience Spanish with us.</p>
     </div>
-    <div class="testimonials__grid">
 
-      <!-- Featured card — populated by JS -->
-      <div class="testi-featured sr sr-d1" id="testi-featured"></div>
+    <div class="testi-carousel sr sr-d1">
+      <!-- Flecha izquierda -->
+      <button class="testi-arrow" id="testi-prev" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
 
-      <!-- Small cards column -->
-      <div class="testimonials__col" id="testi-col"></div>
+      <!-- Track: 3 tarjetas visibles -->
+      <div class="testi-track" id="testi-track"></div>
 
+      <!-- Flecha derecha -->
+      <button class="testi-arrow" id="testi-next" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
     </div>
+
     <div class="testimonials__dots" id="testi-dots" aria-hidden="true"></div>
   </div>
 </section>
@@ -1422,7 +1586,7 @@
         <div class="faq-item__answer">The teacher-student connection is everything to us. If after your intro session you don't feel the right fit, we'll match you with another teacher — no questions asked.</div>
       </div>
 
-      <div class="faq-item sr" role="listitem">
+      <div class="faq-item sr faq-item--extra" role="listitem">
         <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
           How does payment work?
           <span class="faq-item__icon" aria-hidden="true">+</span>
@@ -1430,7 +1594,7 @@
         <div class="faq-item__answer">Payment is made upfront per package for Spanish Your Way (4, 8 or 12 classes), or monthly for Spanish Steps. We'll share all the details and payment methods during your free intro session.</div>
       </div>
 
-      <div class="faq-item sr sr-d1" role="listitem">
+      <div class="faq-item sr sr-d1 faq-item--extra" role="listitem">
         <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
           Where do in-person classes in Bogotá take place?
           <span class="faq-item__icon" aria-hidden="true">+</span>
@@ -1438,13 +1602,17 @@
         <div class="faq-item__answer">We figure it out together. A coworking space, a café, your home, or your office — we meet wherever you feel most comfortable in Bogotá.</div>
       </div>
 
-      <div class="faq-item sr sr-d2" role="listitem">
+      <div class="faq-item sr sr-d2 faq-item--extra" role="listitem">
         <button class="faq-item__btn" aria-expanded="false" onclick="toggleFaq(this)">
           Can I switch programs?
           <span class="faq-item__icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-item__answer">Of course. If at any point you feel a different program would serve you better, we'll make the switch together. Your progress always comes first.</div>
       </div>
+
+      <button class="faq-show-more" id="faq-show-more" onclick="toggleFaqExtra(this)">
+        Show more questions <span>↓</span>
+      </button>
 
     </div>
   </div>
@@ -1461,13 +1629,12 @@
 
       <div>
         <div class="footer__logo">
-          <img src="logo-white.png" alt="Just Spanish Academy" style="height: 150px;">
+          <img src="logo-white.png" alt="Just Spanish Academy" style="height: 150px;" class="footer__logo-img">
         </div>
         <p class="footer__brand-desc">One-to-one online Spanish classes with native Colombian teachers. Designed around your life, your goals and your story.</p>
       </div>
 
-      <div>
-        <div class="footer__col-title">Navigation</div>
+      <div class="footer__nav-col">
         <div class="footer__links">
           <a href="#programs" class="footer__link">Programs</a>
           <a href="#teachers" class="footer__link">Teachers</a>
@@ -1482,7 +1649,7 @@
           <div class="footer__contact-item">
             <a href="https://wa.me/573001672889?text=Hi!%20I'd%20like%20to%20get%20in%20touch%20with%20Just%20Spanish." target="_blank" rel="noopener noreferrer" class="footer__contact-link">
               <span class="footer__contact-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
-              (+57) 300 709 3483
+              (+57) 300 167 2889
             </a>
           </div>
           <div class="footer__contact-item">
@@ -1522,8 +1689,8 @@
     </div>
     <div class="footer__bottom">
       <div class="footer__legal">
-        <span>© 2025 Just Spanish Academy. All rights reserved.</span>
-        <a href="#" class="footer__legal-link">Privacy Policy</a>
+        <span>© 2026 Just Spanish Academy. All rights reserved.</span>
+        <a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
       </div>
       <div class="footer__tagline">Your goals · Your pace · Your way</div>
     </div>
@@ -1620,7 +1787,95 @@
     btn.setAttribute('aria-expanded', !isOpen);
   }
 
-  /* ── Testimonials — click to feature ── */
+  /* ── FAQ show more (mobile) ── */
+  function toggleFaqExtra(btn) {
+    const extras = document.querySelectorAll('.faq-item--extra');
+    const isOpen = btn.classList.contains('open');
+    extras.forEach(el => el.classList.toggle('faq-extra-visible', !isOpen));
+    btn.classList.toggle('open', !isOpen);
+    btn.innerHTML = isOpen
+      ? 'Show more questions <span>↓</span>'
+      : 'Show less <span>↓</span>';
+  }
+
+  /* ── Teachers — carrusel mobile ── */
+  const teachersData = [
+    {
+      photo: 'images/maria-camila.jpg',
+      fallback: '👩‍🏫',
+      name: 'María Camila',
+      city: 'Bogotá',
+      phrase: '"I teach Spanish the way it was meant to be spoken — naturally, confidently, and without fear of making mistakes."',
+      tags: ['Conversational', 'Business', 'Culture'],
+      videoUrl: 'https://youtu.be/Rk5xw_eB37A?si=PFnpJv-IR1pslTzn'
+    },
+    {
+      photo: 'images/mauricio.jpg',
+      fallback: '👨‍🏫',
+      name: 'Mauricio',
+      city: 'Ibagué',
+      phrase: '"Every class is a real conversation. I learn as much from my students as they learn from me."',
+      tags: ['Beginners', 'Grammar', 'Travel'],
+      videoUrl: 'https://youtu.be/tjgixexi3XI?si=lrzvT52itepDbl8V'
+    },
+    {
+      photo: 'images/adriana.jpg',
+      fallback: '👩‍🏫',
+      name: 'Adriana',
+      city: 'Bogotá',
+      phrase: '"Spanish is a living language. I make sure every student feels that from the very first class."',
+      tags: ['Advanced', 'Literature', 'DELE prep'],
+      videoUrl: 'https://youtu.be/h0NuFE4aVtA?si=ub1PNUoNLFOBTJvO'
+    }
+  ];
+
+  const flag = `<svg width="14" height="10" viewBox="0 0 18 13" style="vertical-align:middle"><rect width="18" height="5" fill="#FCD116"/><rect y="5" width="18" height="4" fill="#003087"/><rect y="9" width="18" height="4" fill="#CE1126"/></svg>`;
+
+  let teacherIdx = 0;
+  const teacherTrack  = document.getElementById('teachers-track');
+  const teacherDots   = document.getElementById('teachers-dots');
+  const teacherCarousel = document.getElementById('teachers-carousel');
+
+  function renderTeacherCarousel() {
+    if (!teacherTrack) return;
+    const t = teachersData[teacherIdx];
+
+    teacherTrack.innerHTML = `
+      <div class="teacher-card" style="background:rgba(255,255,255,.06);border-color:rgba(113,149,71,.3)">
+        <img src="${t.photo}" alt="${t.name}, Spanish teacher at Just Spanish Academy"
+          class="teacher-card__photo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="teacher-card__photo-fallback" style="display:none">${t.fallback}</div>
+        <div class="teacher-card__name">${t.name}</div>
+        <div class="teacher-card__city">${t.city} &nbsp;${flag}</div>
+        <div class="teacher-card__phrase">${t.phrase}</div>
+        <div class="teacher-card__tags">${t.tags.map(tag => `<span class="teacher-card__tag">${tag}</span>`).join('')}</div>
+        <button class="teacher-card__btn" onclick="window.open('${t.videoUrl}','_blank')"><span>See more →</span></button>
+      </div>`;
+
+    // Dots
+    teacherDots.innerHTML = '';
+    teachersData.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === teacherIdx ? ' dot--on' : '');
+      d.addEventListener('click', () => { teacherIdx = i; renderTeacherCarousel(); });
+      teacherDots.appendChild(d);
+    });
+  }
+
+  if (teacherTrack) {
+    renderTeacherCarousel();
+    document.getElementById('teachers-prev').addEventListener('click', () => {
+      teacherIdx = (teacherIdx - 1 + teachersData.length) % teachersData.length;
+      renderTeacherCarousel();
+    });
+    document.getElementById('teachers-next').addEventListener('click', () => {
+      teacherIdx = (teacherIdx + 1) % teachersData.length;
+      renderTeacherCarousel();
+    });
+  }
+
+
   const testimonials = [
     {
       quote: '"I\'d tried apps, group classes and online courses before — nothing clicked. Just Spanish was completely different. My teacher understood exactly what I needed and built every class around my actual life."',
@@ -1636,73 +1891,77 @@
     }
   ];
 
-  let featuredIdx = 0;
+  let centerIdx = 0;
+  const total = testimonials.length;
+  const track = document.getElementById('testi-track');
+  const dots  = document.getElementById('testi-dots');
 
-  function renderTestimonials() {
-    const feat = testimonials[featuredIdx];
-    const featured = document.getElementById('testi-featured');
-    const col = document.getElementById('testi-col');
-    const dots = document.getElementById('testi-dots');
+  function mod(n, m) { return ((n % m) + m) % m; }
 
-    // Animate out
-    featured.style.opacity = '0';
-    featured.style.transform = 'translateY(8px)';
+  function buildCard(t, role) {
+    const isCenter = role === 'center';
+    const card = document.createElement('div');
+    card.className = 'testi-card' + (isCenter ? ' testi-card--center' : '');
+    card.innerHTML = `
+      <p class="testi-card__quote">${t.quote}</p>
+      <div class="testi-card__author">
+        <div class="testi-card__avatar">${t.emoji}</div>
+        <div>
+          <div class="testi-card__name">${t.name}</div>
+          <div class="testi-card__from">${t.from}</div>
+        </div>
+      </div>`;
+    if (!isCenter) {
+      card.addEventListener('click', () => {
+        centerIdx = role === 'left'
+          ? mod(centerIdx - 1, total)
+          : mod(centerIdx + 1, total);
+        renderCarousel(false);
+      });
+    }
+    return card;
+  }
+
+  function renderCarousel(animate) {
+    const leftIdx  = mod(centerIdx - 1, total);
+    const rightIdx = mod(centerIdx + 1, total);
+
+    if (animate) {
+      track.style.transition = 'opacity .22s ease';
+      track.style.opacity = '0';
+    }
 
     setTimeout(() => {
-      // Update featured
-      document.getElementById('testi-featured').innerHTML = `
-        <div class="testi-featured__content">
-          <p class="testi-featured__quote">${feat.quote}</p>
-          <div class="testi-featured__author">
-            <div class="testi-author-photo-fallback" style="display:flex">${feat.emoji}</div>
-            <div>
-              <div class="testi-author-name">${feat.name}</div>
-              <div class="testi-author-from">${feat.from}</div>
-            </div>
-          </div>
-        </div>`;
+      track.innerHTML = '';
+      track.appendChild(buildCard(testimonials[leftIdx],  'left'));
+      track.appendChild(buildCard(testimonials[centerIdx], 'center'));
+      track.appendChild(buildCard(testimonials[rightIdx], 'right'));
 
-      // Animate in
-      featured.style.transition = 'opacity .4s ease, transform .4s ease';
-      featured.style.opacity = '1';
-      featured.style.transform = 'translateY(0)';
-
-      // Render small cards
-      col.innerHTML = '';
-      testimonials.forEach((t, i) => {
-        if (i === featuredIdx) return;
-        const card = document.createElement('div');
-        card.className = 'testi-small';
-        card.innerHTML = `
-          <p class="testi-small__quote">${t.quote}</p>
-          <div class="testi-small__author">
-            <div class="testi-sm-photo-fallback">${t.emoji}</div>
-            <div>
-              <div class="testi-sm-name">${t.name}</div>
-              <div class="testi-sm-from">${t.from}</div>
-            </div>
-          </div>`;
-        card.addEventListener('click', () => {
-          featuredIdx = i;
-          renderTestimonials();
-        });
-        col.appendChild(card);
-      });
+      if (animate) {
+        track.style.opacity = '1';
+      }
 
       // Dots
       dots.innerHTML = '';
       testimonials.forEach((_, i) => {
         const d = document.createElement('div');
-        d.className = 'dot' + (i === featuredIdx ? ' dot--on' : '');
-        d.addEventListener('click', () => { featuredIdx = i; renderTestimonials(); });
+        d.className = 'dot' + (i === centerIdx ? ' dot--on' : '');
+        d.addEventListener('click', () => { centerIdx = i; renderCarousel(true); });
         dots.appendChild(d);
       });
-    }, 200);
-
-    featured.style.transition = 'opacity .2s ease, transform .2s ease';
+    }, animate ? 180 : 0);
   }
 
-  renderTestimonials();
+  document.getElementById('testi-prev').addEventListener('click', () => {
+    centerIdx = mod(centerIdx - 1, total);
+    renderCarousel(true);
+  });
+  document.getElementById('testi-next').addEventListener('click', () => {
+    centerIdx = mod(centerIdx + 1, total);
+    renderCarousel(true);
+  });
+
+  renderCarousel(false);
   const modal = document.getElementById('modal');
   const openBtn = document.getElementById('open-modal');
   const closeBtn = document.getElementById('close-modal');
