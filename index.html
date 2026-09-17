@@ -1888,15 +1888,21 @@
   const testimonials = [
     {
       quote: '"I have previously had online Spanish lessons with a teacher from this academy and the quality of teaching was excellent. All lessons were well planned and individually tailored to help me improve my Spanish. I highly recommend!"',
-      photo: 'images/stephen.jpg', name: 'Stephen Dood', from: '🇬🇧 United Kingdom · Spanish Your Way'
+      photo: 'images/stephen.jpg',
+      name: 'Stephen Dood',
+      from: '🇬🇧 United Kingdom · Spanish Your Way'
     },
     {
       quote: '"Within two months I went from barely ordering coffee to having real conversations. The cultural context made all the difference — I wasn\'t just learning grammar, I was learning how people actually speak."',
-      emoji: '👩', name: 'Student name', from: '🇩🇪 Germany · Spanish Steps'
+      photo: null,
+      name: 'Student name',
+      from: '🇩🇪 Germany · Spanish Steps'
     },
     {
       quote: '"The flexibility is unmatched. My teacher always adapts — she knows exactly what I need each week. It doesn\'t feel like a class, it feels like a conversation with someone who\'s genuinely invested in my progress."',
-      emoji: '🧑', name: 'Student name', from: '🇨🇦 Canada · Spanish Your Way'
+      photo: null,
+      name: 'Student name',
+      from: '🇨🇦 Canada · Spanish Your Way'
     }
   ];
 
@@ -1914,7 +1920,7 @@
     card.innerHTML = `
       <p class="testi-card__quote">${t.quote}</p>
       <div class="testi-card__author">
-        <div class="testi-card__avatar">${t.emoji}</div>
+        ${t.photo    ? `<img src="${t.photo}" alt="${t.name}" class="testi-card__avatar" style="object-fit:cover;border-radius:50%;">`   : `<div class="testi-card__avatar">👤</div>` }
         <div>
           <div class="testi-card__name">${t.name}</div>
           <div class="testi-card__from">${t.from}</div>
