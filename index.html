@@ -1930,7 +1930,12 @@
     card.innerHTML = `
       <p class="testi-card__quote">${t.quote}</p>
       <div class="testi-card__author">
-        ${t.photo    ? `<img src="${t.photo}" alt="${t.name}" class="testi-card__avatar" style="object-fit:cover;border-radius:50%;">`   : `<div class="testi-card__avatar">👤</div>` }
+        ${t.photo
+          ? `<img src="${t.photo}" alt="${t.name}" class="testi-card__avatar" style="object-fit:cover;border-radius:50%;width:56px;height:56px;">`
+          : t.initials
+            ? `<div class="testi-card__avatar" style="width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:1rem;background:#eef5e4;color:#4f6b33;">${t.initials}</div>`
+            : `<div class="testi-card__avatar">👤</div>`
+        }
         <div>
           <div class="testi-card__name">${t.name}</div>
           <div class="testi-card__from">${t.from}</div>
